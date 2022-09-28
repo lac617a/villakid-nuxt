@@ -1,0 +1,139 @@
+/* ------------------------------------
+ #                 404
+ -------------------------------------- */
+
+.error-404 {
+  background-color: $color-lightgrey;
+  padding-top: 183px;
+  padding-bottom: 142px;
+  color: $color-bluedark;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.error-404__container,
+.try-again__container {
+  @extend .-container;
+}
+
+.error-404__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 58px;
+  text-align: center;
+}
+
+.error-404__title {
+  @extend .-semiBold;
+  font-size: $font-h4;
+  line-height: 40px;
+}
+
+.error-404__img {
+  max-width: 120px;
+}
+
+.error-404__text {
+  font-size: $font-p;
+  max-width: 620px;
+}
+
+
+.try-again {
+  padding-top: 174px;
+  padding-bottom: 144px;
+  color: $color-bluedark;
+}
+
+.try-again__content {
+  text-align: center;
+}
+
+.try-again__help-button {
+  position: fixed;
+  right: 50px;
+  bottom: 40px;
+
+  img {
+    max-width: 90px;
+  }
+}
+
+.try-again__help {
+  position: fixed;
+  right: 50px;
+  bottom: 40px;
+}
+
+.try-again__box {
+  background-color: $color-lightin;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
+  border-radius: 20px;
+}
+
+.try-again__pop-up {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 24px 27px 10px;
+  box-sizing: content-box;
+
+  .try-again__pop-up-text {
+    font-size: $font-small;
+
+    strong {
+      font-size: $font-p;
+    }
+  }
+
+  .try-again__contact {
+    border-radius: 10px;
+    padding: 13px 23px 15px;
+    background-color: $color-calm;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 6px;
+  }
+
+  .try-again__contact-title {
+    @extend .-medium;
+    font-size: $font-p2;
+  }
+
+  .try-again__contact-text {
+    font-size: $font-small;
+
+    span {
+      padding: 0 34px;
+    }
+  }
+}
+
+.try-again__header {
+  position: relative;
+  display: flex;
+  background-color: $color-lightgrey;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px 20px 0px 0px;
+
+  .try-again__title {
+    @extend .-medium;
+    margin: 0 auto;
+    font-size: $font-h6;
+  }
+
+  button {
+    position: absolute;
+    right: 36px;
+  }
+
+  img {
+    max-width: 18.5px;
+    max-height: 18.5px;
+  }
+}

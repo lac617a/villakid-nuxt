@@ -1,0 +1,32 @@
+/*
+Theme Name: Villakid
+Author: ALAXA TECH
+Author URI: https://github.com/ALAXA-TECH
+Description: App Villakid
+Requires Vue: 3.2.13
+Version: 0.1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: PWA, Villakid
+*/
+
+
+// lib
+// @import "lib/fonts";
+@import "lib/var";
+@import "lib/mixin";
+
+// layout
+@import "layout/bootstrap_reboot";
+@import "layout/site";
+@import "layout/grid";
+
+// base
+@import "base/typography";
+@import "base/links";
+@import "base/buttons";
+@import "base/animation";
+@import "base/icons";
+
+// components
+@import "components/404";

@@ -1,0 +1,128 @@
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+
+  // Scroll bar
+  /* width */
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: $color-lightin;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $color-primary;
+    border-radius: 10px;
+    border: 3px solid $color-lightin;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: $color-primary-shadow;
+  }
+}
+
+dl,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  overflow: visible;
+  border: 0;
+  font: inherit;
+  -webkit-font-smoothing: inherit;
+  letter-spacing: inherit;
+  background: none;
+  cursor: pointer;
+}
+
+blockquote {
+  margin: 0;
+}
+
+::selection {
+  background-color: $color-secondary;
+}
+
+// --- Margin Scroll ---
+#WhoAreWe,
+#negocios {
+  scroll-margin-top: 150px;
+}
+
+
+// --- PAGE FRAME ---
+
+.page-frame {
+  height: 100vh;
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 20%;
+    left: 0;
+    height: 50%;
+    width: 200px;
+    background-image: url("@/assets/img/background/vector-left.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left left;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 20%;
+    right: -10px;
+    height: 50%;
+    width: 200px;
+    background-image: url("@/assets/img/background/vector-right.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center left;
+  }
+  &-before::before {
+    content: url("@/assets/img/background/vector-header-left.svg");
+    position: absolute;
+    z-index: -1;
+    top: -10px;
+    left: -10px;
+  }
+  &-before::after {
+    content: url("@/assets/img/background/vector-header-right.svg");
+    position: absolute;
+    z-index: -1;
+    top: -10px;
+    right: -10px;
+  }
+  &-after::before {
+    content: url("@/assets/img/background/vector-footer-left.svg");
+    position: absolute;
+    z-index: -1;
+    bottom: -30px;
+    left: 0;
+  }
+  &-after::after {
+    content: url("@/assets/img/background/vector-footer-right.svg");
+    position: absolute;
+    z-index: -1;
+    bottom: -30px;
+    right: 0;
+  }
+}
