@@ -1,0 +1,63 @@
+<template>
+  <aside class="v-sidebar" :class="{ 'is-active': sideBar }">
+    <ul class="v-navbar">
+      <Item
+        v-for="item in sidebar"
+        :key="item.name"
+        :logo="item.logo"
+        :name="item.name"
+        :nuxt-link="item.nuxtLink"
+        :child-item="item.child"
+        :state="sideBar"
+      />
+    </ul>
+    <div class="wrapper-logout">
+      <button class="btn" @click.stop="sideBar = !sideBar">
+        <img
+          src="@/assets/img/icon/arrow-left.svg"
+          alt="arrow-left-large"
+          :style="{transform: `rotate(${sideBar ? '0deg' : '180deg'})`}"
+        />
+      </button>
+      <span class="link_name logout" @click.once="logout()">Cerrar Sesión</span>
+    </div>
+  </aside>
+</template>
+
+<script lang="ts">
+import Vue, { PropType } from 'vue'
+import Item from './Item.vue'
+
+interface ISidebarProps {
+  name: string;
+  logo: string;
+  nuxtLink?: string;
+  child: {
+    name: string;
+    nuxtLink: string;
+  }[]
+}
+
+export default Vue.extend({
+  name: 'SideBarUI',
+  components: { Item },
+  props: {
+    sidebar: {
+      type: Array as PropType<ISidebarProps[]>,
+      default: () => []
+    }
+  },
+  data: () => ({
+    sideBar: true,
+  }),
+  methods: {
+    logout() {
+      this.$store.dispatch('account/logout')
+    },
+  },
+})
+</script>
+
+<style lang="scss">
+@import '@/assets/sass/components/sidebar';
+</style>

@@ -4,10 +4,12 @@
     <FrameUI v-else>
       <article class="-row -flex:nowrap -flex:column -flexCenterCenter -vh">
         <section class="-mBgBottom">
-          <h1 class="-bold text-color-primary">Administrador</h1>
-          <p class="-center -semiBold text-color-grey-dark">Ingresa a tu backoffice</p>
+          <h1 class="-bold text-color-primary">¿Olvidaste tu contraseña?</h1>
+          <p class="-center -semiBold text-color-grey-dark">
+            Por favor introduce tu correo electrónico para poder enviarte la recuperación de tu contraseña.
+          </p>
         </section>
-        <section class="-col-12 -vw">
+        <section class="-col-12 -mBottom:1">
           <FormUIVue>
             <InputUIVue
               ref="email"
@@ -16,31 +18,12 @@
               type="email"
               name="email"
               label="Correo electrónico"
-              msg="Tu usuario no se encuentra registrado, por favor vuelva a ingresar su código." />
-            <InputUIVue
-              ref="password"
-              v-model="user.pwd"
-              :error="user.errorPwd"
-              type="password"
-              name="password"
-              label="Contraseña"
-              msg="Contraseña incorrecta. Vuelva a introducir su contraseña e inténtelo de nuevo." />
+              label-color="primary"
+              msg="Tu correo electrónico no se encuentra registrado, por favor vuelva a intentar." />
           </FormUIVue>
         </section>
         <section class="-col-12 -flex:column -flexCenterCenter">
-          <div class="-row -flexCenterCenter">
-            <div class="-col-6">
-              <InputUIVue
-                type="checkbox"
-                name="remember-pwd"
-                label="Recordar contraseña"
-              />
-            </div>
-            <div class="-col-6 -textRight">
-              <NuxtLink class="-underline" to="/manage/log/forgot-password">Olvidaste tu contraseña</NuxtLink>
-            </div>
-          </div>
-          <ButtonUIVue name="Acceder" type="submit" color="primary" @click="handleChecked()" />
+          <ButtonUIVue name="Enviar" type="submit" color="primary" @click="handleData()" />
         </section>
       </article>
     </FrameUI>
@@ -70,14 +53,12 @@ export default Vue.extend({
     loading: false,
     user: {
       email: '',
-      pwd: '',
       errorEmail: false,
-      errorPwd: false,
     }
   }),
   // middleware: "auth",
   head: () => ({
-    title: "Iniciar Sesión - admin | Villakid",
+    title: "Recuperación de contraseña - admin | Villakid",
   }),
   mounted() {
     setTimeout(() => {
@@ -85,9 +66,8 @@ export default Vue.extend({
     }, 2000)
   },
   methods: {
-    handleChecked() {
+    handleData() {
       if (this.user.email === "") this.user.errorEmail = true
-      if (this.user.pwd === "") this.user.errorPwd = true
     },
   }
 })
@@ -111,8 +91,9 @@ article {
   width: 100%;
   margin: 0 auto;
   section > h1 {
-    font-size: 48px;
-    line-height: 65px;
+    font-size: 25px;
+    line-height: 34px;
+    margin-bottom: 2rem;
     text-align: center;
   }
 }

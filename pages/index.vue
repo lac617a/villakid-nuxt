@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+  <nuxt/>
 </template>
 
 <script lang="ts">

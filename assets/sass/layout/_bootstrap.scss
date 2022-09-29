@@ -1,0 +1,59 @@
+@for $i from 1 to 10 {
+  // <-MARGIN->
+  .-m\:#{$i} {
+    margin: $i * 1rem !important;
+  }
+  .-mTop\:#{$i} {
+    margin-top: $i * 1rem !important;
+  }
+  .-mRight\:#{$i} {
+    margin-right: $i * 1rem !important;
+  }
+  .-mBottom\:#{$i} {
+    margin-bottom: $i * 1rem !important;
+  }
+  .-mLeft\:#{$i} {
+    margin-left: $i * 1rem !important;
+  }
+  .-mInline\:#{$i} {
+    margin-inline: $i * 1rem !important;
+  }
+  .-mBlock\:#{$i} {
+    margin-block: $i * 1rem !important;
+  }
+
+  // <-PADDING->
+  .-p\:#{$i} {
+    padding: $i * 1rem !important;
+  }
+  .-pTop\:#{$i} {
+    padding-top: $i * 1rem !important;
+  }
+  .-pRight\:#{$i} {
+    padding-right: $i * 1rem !important;
+  }
+  .-pBottom\:#{$i} {
+    padding-bottom: $i * 1rem !important;
+  }
+  .-pLeft\:#{$i} {
+    padding-left: $i * 1rem !important;
+  }
+  .-pInline\:#{$i} {
+    padding-inline: $i * 1rem !important;
+  }
+  .-pBlock\:#{$i} {
+    padding-block: $i * 1rem !important;
+  }
+
+  // <-GAP->
+  .-gap\:#{$i} {gap: $i * 1rem !important;}
+}
+
+@each $name, $color in $colors {
+  .text-color-#{$name} {
+    color: #{$color} !important;
+  }
+  .bg-color-#{$name} {
+    background-color: #{$color} !important;
+  }
+}

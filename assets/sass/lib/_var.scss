@@ -86,12 +86,3 @@ $colors: (
   grey-dark: $color-grey-dark,
   grey-a: $color-grey,
 );
-
-@each $name, $color in $colors {
-  .text-color-#{$name} {
-    color: #{$color} !important;
-  }
-  .bg-color-#{$name} {
-    background-color: #{$color} !important;
-  }
-}
