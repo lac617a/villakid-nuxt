@@ -1,75 +1,67 @@
 <template>
-  <transition name="slide-fade" mode="out-in">
-    <Loading v-if="loading" />
-    <FrameUI v-else>
-      <article class="-row -flex:nowrap -flex:column -flexCenterCenter -vh">
-        <section class="-mBgBottom">
-          <h1 class="-bold text-color-primary">¿Olvidaste tu contraseña?</h1>
-          <p class="-center -semiBold text-color-grey-dark">
-            Por favor introduce tu correo electrónico para poder enviarte la recuperación de tu contraseña.
-          </p>
-        </section>
-        <section class="-col-12 -mBottom:1">
-          <FormUIVue>
-            <InputUIVue
-              ref="email"
-              v-model="user.email"
-              :error="user.errorEmail"
-              type="email"
-              name="email"
-              label="Correo electrónico"
-              label-color="primary"
-              msg="Tu correo electrónico no se encuentra registrado, por favor vuelva a intentar." />
-          </FormUIVue>
-        </section>
-        <section class="-col-12 -flex:column -flexCenterCenter">
-          <ButtonUIVue name="Enviar" type="submit" color="primary" @click="handleData()" />
-        </section>
-      </article>
-    </FrameUI>
-  </transition>
+  <article class="-row -flex:nowrap -flex:column -flexCenterCenter -vh">
+    <section class="-mBgBottom">
+      <h1 class="-bold text-color-primary">¿Olvidaste tu contraseña?</h1>
+      <p class="-center -semiBold text-color-grey-dark">
+        Por favor introduce tu correo electrónico para poder enviarte la
+        recuperación de tu contraseña.
+      </p>
+    </section>
+    <section class="-col-12 -mBottom:1">
+      <FormUIVue>
+        <InputUIVue
+          ref="email"
+          v-model="user.email"
+          :error="user.errorEmail"
+          type="email"
+          name="email"
+          label="Correo electrónico"
+          label-color="primary"
+          msg="Tu correo electrónico no se encuentra registrado, por favor vuelva a intentar."
+        />
+      </FormUIVue>
+    </section>
+    <section class="-col-12 -flex:column -flexCenterCenter">
+      <ButtonUIVue
+        name="Enviar"
+        type="submit"
+        color="primary"
+        @click="handleData()"
+      />
+    </section>
+  </article>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
-import FrameUI from '@/layouts/FrameUI.vue'
-import Loading from '@/components/Loading.vue'
 import InputUIVue from '@/components/UI/InputUI.vue'
 import ButtonUIVue from '@/components/UI/ButtonUI.vue'
 import FormUIVue from '~/components/UI/FormUI.vue'
-// import {remember, showPassword} from '@/utils/remember';
 
 export default Vue.extend({
-  name: 'ManageSigninPage',
+  name: 'ManageForgotPasswordPage',
   components: {
-    Loading,
-    FrameUI,
     FormUIVue,
     InputUIVue,
     ButtonUIVue,
   },
+  layout: 'FrameUI',
   data: () => ({
-    loading: false,
     user: {
       email: '',
       errorEmail: false,
-    }
+    },
   }),
   // middleware: "auth",
   head: () => ({
-    title: "Recuperación de contraseña - admin | Villakid",
+    title: 'Recuperación de contraseña - admin | Villakid',
   }),
-  mounted() {
-    setTimeout(() => {
-      this.loading = false
-    }, 2000)
-  },
   methods: {
     handleData() {
-      if (this.user.email === "") this.user.errorEmail = true
+      if (this.user.email === '') this.user.errorEmail = true
     },
-  }
+  },
 })
 </script>
 

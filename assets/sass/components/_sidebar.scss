@@ -4,21 +4,24 @@ $villa-kid-color-white: #FFFFFF;
 $villa-kid-orange: #fa661e;
 $default-width-sidebar: 217px;
 
+
 .v-sidebar {
   display: flex;
   position: relative;
 
   background-color: $villa-kid-color-azul-violaseo;
-  min-height: 100vh;
+  height: calc(100vh - 80px);
   overflow-x: hidden;
+  overflow-y: auto;
   width: $default-width-sidebar - 123;
   transition: all linear .2s;
   padding-bottom: 1rem;
 
   flex-direction: column;
-  flex-wrap: wrap;
   flex-shrink: 0;
-
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
   .v-navbar {
     flex-grow: 1;
 
@@ -44,13 +47,25 @@ $default-width-sidebar: 217px;
       .wrapper-content {
         display: flex;
         flex-direction: row;
-        align-content: center;
+        align-items: center;
+        width: 100%;
         text-decoration: none;
         transition: all ease-out .2s;
 
         &:hover {
           background: $villa-kid-color-azul-violaseo-active;
           box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+        }
+        &__icon {
+          display: none;
+          width: 100%;
+          text-align: right;
+          svg {
+            transition: 300ms;
+          }
+          .is-active {
+            transform: rotate(90deg);
+          }
         }
       }
 
@@ -60,8 +75,8 @@ $default-width-sidebar: 217px;
 
       img {
         cursor: pointer;
-        margin: 2rem;
-        width: initial !important;
+        margin: 2rem auto;
+        width: 28px;
         transition: all linear .2s;
       }
 
@@ -73,6 +88,7 @@ $default-width-sidebar: 217px;
       .link_name {
         transition: opacity linear .2s;
         opacity: 0;
+        display: none;
       }
     }
   }
@@ -132,7 +148,7 @@ $default-width-sidebar: 217px;
       .child-item {
         position: relative;
 
-        .item>a {
+        .item > a {
           padding: 1rem;
           padding-left: 1.5rem;
           display: block;
@@ -160,9 +176,12 @@ $default-width-sidebar: 217px;
         padding: 1.2rem;
         width: 100%;
         cursor: pointer;
-
+        &__icon {
+          display: block;
+        }
         .link_name {
           opacity: 1;
+          display: block;
         }
 
         .content-list>span {

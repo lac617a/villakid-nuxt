@@ -6,9 +6,10 @@
         :key="item.name"
         :logo="item.logo"
         :name="item.name"
-        :nuxt-link="item.nuxtLink"
-        :child-item="item.child"
         :state="sideBar"
+        :child-item="item.child"
+        :nuxt-link="item.nuxtLink"
+        :nuxt-link-name="item.nuxtLinkName"
       />
     </ul>
     <div class="wrapper-logout">
@@ -32,6 +33,7 @@ interface ISidebarProps {
   name: string;
   logo: string;
   nuxtLink?: string;
+  nuxtLinkName?: string;
   child: {
     name: string;
     nuxtLink: string;

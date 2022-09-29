@@ -1,1 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700&display=swap');
+
+.fade-enter-active, .fade-leave-active { transition: opacity .5s; }
+.fade-enter, .fade-leave-active { opacity: 0; }
+
+/*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-active {
+  transform: translateY(-100px);
+  opacity: 0;
+}

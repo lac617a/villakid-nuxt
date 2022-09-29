@@ -1,7 +1,7 @@
 <template>
   <div class="page-frame">
     <div class="page-frame-before"></div>
-    <slot></slot>
+    <nuxt />
     <div class="page-frame-after"></div>
   </div>
 </template>
@@ -10,10 +10,6 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'FramePage',
+  name: 'FrameUI',
 })
 </script>
-
-<!-- <style lang="scss" scoped>
-@import '../assets/sass/layout/site';
-</style> -->

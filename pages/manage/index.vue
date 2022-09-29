@@ -1,20 +1,74 @@
 <template>
   <div class="container -p:2">
     <h1 class="text-color-primary -bold">Resumen</h1>
-    <div
-      class="summary -flexCenterCenter -flex:column -mAuto -gap:2"
-      style="height: 90%; width: 100%; max-width: 400px;">
-      <p class="-semiBold">No cuentas con un resumen</p>
-      <p class="-center">El resumen de la actividad de tu colegio aparecerá en esta sección.</p>
-    </div>
+    <CSummary />
+    <!-- <div class="-flex -pTop:2">
+      <CardSummary
+        v-for="element in summary"
+        :key="element.title"
+        :title="element.title"
+        :show-list="element.showList"
+      />
+    </div> -->
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from 'vue'
+import CSummary from '~/components/CSummary.vue'
+// import CardSummary from '@/components/cards/CardSummary.vue'
 export default Vue.extend({
   name: 'ManageIndexPage',
-  layout: 'sidebar/manage'
+  components: { CSummary },
+  // components: { CardSummary },
+  layout: 'ManageUI',
+  data: () => ({
+    summary: [
+      {
+        title: 'Inicial',
+        showList: [
+          {
+            title: 'Profesores registrados',
+            result: 20,
+            svg: 'people-secondary.svg',
+          },
+          {
+            title: 'Alumnos registrados',
+            result: 20,
+            svg: 'peoples-secondary.svg',
+          },
+          {
+            title: 'Cursos',
+            result: 20,
+            svg: 'book-secondary.svg',
+          },
+        ],
+      },
+      {
+        title: 'Primaria',
+        showList: [
+          {
+            title: 'Profesores registrados',
+            result: 20,
+            svg: 'people-secondary.svg',
+          },
+          {
+            title: 'Alumnos registrados',
+            result: 20,
+            svg: 'peoples-secondary.svg',
+          },
+          {
+            title: 'Cursos',
+            result: 20,
+            svg: 'book-secondary.svg',
+          },
+        ],
+      },
+    ],
+  }),
+  head: () => ({
+    title: 'Home - admin | Villakid',
+  }),
 })
 </script>
 

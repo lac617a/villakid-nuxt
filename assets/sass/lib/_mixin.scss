@@ -85,7 +85,7 @@
 // Weight
 @mixin Font1Weight($weight: 5) {
     font-family: $font1;
-    font-weight: ($weight) * 100;
+    font-weight: ($weight) * 100 !important;
 }
 
 // OverFlow

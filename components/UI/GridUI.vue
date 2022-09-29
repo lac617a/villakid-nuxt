@@ -1,6 +1,6 @@
 <template>
   <div class="-row -flex:nowrap">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

@@ -2,7 +2,7 @@
   <li
     role="listbox"
     class="v-navbar v-item"
-    :class="{ 'item-active': $route.name === nuxtLink }"
+    :class="{ 'item-active': $route.name === nuxtLinkName }"
   >
     <NuxtLink v-if="nuxtLink" :to="nuxtLink">
       <div class="wrapper-content">
@@ -13,6 +13,13 @@
     <button v-else class="wrapper-content" @click.stop="isActive = !isActive">
       <img :src="getImage" :alt="nuxtLink" />
       <span class="link_name">{{ name }}</span>
+      <div class="wrapper-content__icon">
+        <font-awesome-icon
+          :class="{ 'is-active': isActive && state }"
+          icon="fa-solid fa-chevron-right"
+          color="#FFFFFF"
+        />
+      </div>
     </button>
     <ul
       v-show="isActive && state"
@@ -46,6 +53,7 @@ export default Vue.extend({
     name: { type: String, default: undefined },
     logo: { type: String, default: undefined },
     nuxtLink: { type: String, default: undefined },
+    nuxtLinkName: { type: String, default: undefined },
     childItem: {
       type: Array as PropType<ISidebarItemProps[]>,
       default: () => [],
@@ -57,7 +65,7 @@ export default Vue.extend({
   }),
   computed: {
     getImage(): string {
-      return require(`@/assets/img/sideBar/${this.logo}`)
+      return require(`@/assets/img/icon/${this.logo}`)
     },
   },
 })

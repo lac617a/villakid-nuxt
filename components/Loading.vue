@@ -1,7 +1,7 @@
 <template>
   <div class="page-frame page-loading -row -justifyContentCenter">
     <div class="page-frame-before"></div>
-    <transition name="slide-fade" mode="out-in">
+    <transition name="slide-fade" mode="in-out">
       <img
         v-if="showLogo"
         alt="loading"
@@ -16,13 +16,17 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "LoadingScreen",
+  transition: {
+    name: 'slide-fade',
+    mode: 'in-out'
+  },
   data: () => ({
     showLogo: false,
   }),
   beforeMount() {
     setTimeout(() => {
       this.showLogo = true;
-    }, 800);
+    }, 500);
   },
 });
 </script>

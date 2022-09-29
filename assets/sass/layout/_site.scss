@@ -11,28 +11,30 @@ html {
 body {
   overflow-x: hidden;
 
-  // Scroll bar
-  /* width */
-  &::-webkit-scrollbar {
-    width: 14px;
-  }
 
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background: $color-lightin;
-  }
+}
 
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: $color-primary;
-    border-radius: 10px;
-    border: 3px solid $color-lightin;
-  }
+// Scroll bar
+/* width */
+::-webkit-scrollbar {
+  width: 14px;
+}
 
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: $color-primary-shadow;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  background: $color-lightin;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $color-primary;
+  border-radius: 10px;
+  border: 3px solid $color-lightin;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $color-primary-shadow;
 }
 
 dl,
@@ -60,17 +62,12 @@ blockquote {
   background-color: $color-secondary;
 }
 
-// --- Margin Scroll ---
-#WhoAreWe,
-#negocios {
-  scroll-margin-top: 150px;
-}
-
 
 // --- PAGE FRAME ---
 
 .page-frame {
   height: 100vh;
+
   &::before {
     content: "";
     position: absolute;
@@ -84,6 +81,7 @@ blockquote {
     background-repeat: no-repeat;
     background-position: left left;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -97,6 +95,7 @@ blockquote {
     background-repeat: no-repeat;
     background-position: center left;
   }
+
   &-before::before {
     content: url("@/assets/img/background/vector-header-left.svg");
     position: absolute;
@@ -104,6 +103,7 @@ blockquote {
     top: -10px;
     left: -10px;
   }
+
   &-before::after {
     content: url("@/assets/img/background/vector-header-right.svg");
     position: absolute;
@@ -111,6 +111,7 @@ blockquote {
     top: -10px;
     right: -10px;
   }
+
   &-after::before {
     content: url("@/assets/img/background/vector-footer-left.svg");
     position: absolute;
@@ -118,6 +119,7 @@ blockquote {
     bottom: -30px;
     left: 0;
   }
+
   &-after::after {
     content: url("@/assets/img/background/vector-footer-right.svg");
     position: absolute;
