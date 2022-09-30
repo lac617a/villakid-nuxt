@@ -1,8 +1,14 @@
 <template>
   <div class="container -p:2">
-    <h1 class="text-color-primary -bold">
-      Cursos - Nivel {{ hanldeCapitalize() }}
-    </h1>
+    <div class="-flex -justifyContentSpace">
+      <h1 class="text-color-primary -bold">
+        Cursos - Nivel {{ hanldeCapitalize() }} 
+      </h1>
+      <div class="-flex">
+        <ButtonUI name="Crear nuevo curso" type="button" color="secondary" />
+      </div>
+    </div>
+
     <CSummary
       title="No tienes ningún curso registrado"
       body="Por favor,haga clic en el botón superior para poder crear los cursos según corresponda."
@@ -14,10 +20,11 @@
 import Vue from 'vue'
 import CSummary from '@/components/CSummary.vue'
 import capitalize from '@/utils/capitalize'
+import ButtonUI from '~/components/UI/ButtonUI.vue'
 
 export default Vue.extend({
   name: 'ManageCourseSlugPage',
-  components: { CSummary },
+  components: { CSummary, ButtonUI },
   layout: 'ManageUI',
   head() {
     return {

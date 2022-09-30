@@ -1,6 +1,8 @@
 <template>
   <li
-    role="listbox"
+    role="listitem"
+    :aria-label="name"
+    :aria-labelledby="name"
     class="v-navbar v-item"
     :class="{ 'item-active': $route.name === nuxtLinkName }"
   >
@@ -11,7 +13,7 @@
       </div>
     </NuxtLink>
     <button v-else class="wrapper-content" @click.stop="isActive = !isActive">
-      <img :src="getImage" :alt="nuxtLink" />
+      <img :src="getImage" :alt="name" />
       <span class="link_name">{{ name }}</span>
       <div class="wrapper-content__icon">
         <font-awesome-icon
@@ -26,13 +28,10 @@
       class="child-item"
       :class="{ 'is-active': isActive && state }"
     >
-      <li
-        v-for="item in childItem"
-        :key="item.name"
-        class="item"
-        :class="{ 'is-active': $route.name === 'StudentGradeInitial' }"
-      >
-        <NuxtLink :to="item.nuxtLink">{{ item.name }}</NuxtLink>
+      <li v-for="item in childItem" :key="item.name" class="item">
+        <NuxtLink active-class="is-active" :to="item.nuxtLink">{{
+          item.name
+        }}</NuxtLink>
       </li>
     </ul>
   </li>

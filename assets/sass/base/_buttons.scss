@@ -6,8 +6,7 @@ button {
 
 .btn {
   flex-grow: 1;
-  max-width: 300px;
-  width: 100%;
+  // width: 100%;
   a,
   span {
     display: block;
@@ -17,25 +16,40 @@ button {
     font-size: $font-h6;
     line-height: 25px;
     padding: 14px 60px;
-    max-width: 300px;
     width: 100%;
     border-radius: 30px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
-    color: $color-lightin !important;
+    color: $color-lightin;
   }
 }
 
-.btn--primary {
-
+.btn--primary.btn\:solid {
   a,
   span {
     background-color: $color-primary;
   }
 }
 
-.btn--secondary {
-  a {
+.btn--secondary.btn\:solid {
+  a,
+  span {
     background-color: $color-secondary;
+  }
+}
+
+.btn--primary.btn\:outline {
+  a,
+  span {
+    border: 1px solid $color-primary;
+    color: $color-primary;
+  }
+}
+
+.btn--secondary.btn\:outline {
+  a,
+  span {
+    border: 1px solid $color-secondary;
+    color: $color-secondary;
   }
 }
 

@@ -111,6 +111,13 @@
 .-justifyContentCenter {
   justify-content: center;
 }
+.-justifyContentSpace {
+  justify-content: space-between;
+}
+.-justifyContentEnd {
+  justify-content: flex-end;
+}
+
 
 .-flexCenterCenter {
   display: flex;

@@ -52,6 +52,7 @@
           name="Acceder"
           type="submit"
           color="primary"
+          style="max-width: 300px; width: 100%"
           @click="handleChecked()"
         />
       </section>

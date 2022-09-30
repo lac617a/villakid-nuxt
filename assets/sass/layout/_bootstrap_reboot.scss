@@ -218,8 +218,16 @@ textarea {
 }
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  font: inherit;
+  appearance: none;
+  background-color: transparent;
+  position: absolute;
+  visibility: hidden;
+  font-size: 400px;
+  border: none;
+  top: 0;
+  left: 10px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 details,
