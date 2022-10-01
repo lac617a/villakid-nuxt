@@ -34,6 +34,9 @@ export default Vue.extend({
 <style lang="scss" scoped>
 $villa-kid-color-black-1: #000000;
 $villa-kid-color-grey-1: #333333;
+@import '@/assets/sass/lib/mixin';
+@import '@/assets/sass/lib/var';
+
 .card-summary {
   display: flex;
   flex-direction: column;
@@ -44,11 +47,20 @@ $villa-kid-color-grey-1: #333333;
   box-sizing: border-box;
   border-radius: 20px;
   margin: 0 30px;
+  @include mediaQueriesMd() {
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+  }
   &__title {
     color: $villa-kid-color-black-1;
-    font-weight: 600;
+    font-weight: 600 !important;
     font-size: 22px;
     line-height: 30px;
+    @include mediaQueriesMd() {
+      font-size: 18px;
+      line-height: 25px;
+    }
   }
   &__nav {
     display: grid;
@@ -68,8 +80,14 @@ $villa-kid-color-grey-1: #333333;
     box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     color: $villa-kid-color-grey-1;
+    @include mediaQueriesMd() {
+      padding: 20px;
+    }
     img {
       max-width: 45px;
+      @include mediaQueriesMd() {
+        max-width: 30px;
+      }
     }
   }
   &__content {
@@ -80,6 +98,10 @@ $villa-kid-color-grey-1: #333333;
       font-size: 18px;
       text-align: left;
       line-height: 25px;
+      @include mediaQueriesMd() {
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
   }
 }

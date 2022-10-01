@@ -9,7 +9,7 @@
         <ButtonUI name="Crear profesor" type="button" color="secondary" />
       </div>
     </div>
-    <CSummary
+    <Summary
       title="No tienes ningún profesor registrado"
       body="Por favor,haga clic en el botón superior para poder importar o crear a los profesores según corresponda."
     />
@@ -45,7 +45,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import CSummary from '@/components/CSummary.vue'
+import Summary from '@/components/Summary.vue'
 import capitalize from '@/utils/capitalize'
 // import CModal from '@/components/CModal.vue'
 // import InputUI from '@/components/UI/InputUI.vue'
@@ -53,7 +53,7 @@ import ButtonUI from '~/components/UI/ButtonUI.vue'
 
 export default Vue.extend({
   name: 'ManageTeacherSlugPage',
-  components: { CSummary, ButtonUI },
+  components: { Summary, ButtonUI },
   layout: 'ManageUI',
   head() {
     return {

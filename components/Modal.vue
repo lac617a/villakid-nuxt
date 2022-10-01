@@ -1,9 +1,9 @@
 <template>
   <div class="v-modal">
     <div class="v-modal-body">
-      <div class="v-modal__header">
+      <div v-if="withHeader" class="v-modal__header">
         <h2 class="-bold">{{title}}</h2>
-        <button type="button">
+        <button type="button" @click.stop="handleClose">
           <font-awesome-icon icon="fa-solid fa-circle-xmark" color="#9494D8" />
         </button>
       </div>
@@ -20,12 +20,22 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'CModal',
   props: {
-    title: {type: String, default: 'Sin titulo'}
+    title: { type: String, default: undefined },
+    withHeader: { type: Boolean, default: false }
+  },
+  methods: {
+    handleClose() {
+      this.$store.commit('SETBACKDROP', false)
+      this.$emit('close', false)
+    }
   }
 })
 </script>
 
 <style lang="scss">
+@import '@/assets/sass/lib/var';
+@import '@/assets/sass/lib/mixin';
+
 label {
   display: block;
   margin: 0;
@@ -33,8 +43,8 @@ label {
   font-size: 18px;
   line-height: 25px;
 }
-#upload input {
-  padding: 8px;
+input {
+  padding: 8px 18px !important;
 }
 .v-modal {
   position: fixed;
@@ -48,6 +58,18 @@ label {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
+  transition: 300ms;
+  @include mediaQueriesLg() {
+    margin: 0 1rem;
+    right: 0;
+    left: 0;
+    top: 30%;
+    transform: none;
+    width: auto;
+  }
+  @include mediaQueriesMd() {
+    padding: 20px;
+  }
   &__header {
     display: flex;
     justify-content: space-between;

@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <CSummary
+    <Summary
       title="No tienes ningún curso registrado"
       body="Por favor,haga clic en el botón superior para poder crear los cursos según corresponda."
     />
@@ -18,13 +18,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import CSummary from '@/components/CSummary.vue'
+import Summary from '@/components/Summary.vue'
 import capitalize from '@/utils/capitalize'
-import ButtonUI from '~/components/UI/ButtonUI.vue'
+import ButtonUI from '@/components/UI/ButtonUI.vue'
 
 export default Vue.extend({
   name: 'ManageCourseSlugPage',
-  components: { CSummary, ButtonUI },
+  components: { Summary, ButtonUI },
   layout: 'ManageUI',
   head() {
     return {

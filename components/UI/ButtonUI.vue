@@ -1,5 +1,11 @@
 <template>
-  <button :type="type.type" :class="`btn btn--${color} btn:${fill}`" @click.stop="$emit('click')">
+  <button
+    :type="type.type"
+    :class="`btn btn--${color} btn:${fill}`"
+    @click.stop="$emit('click')"
+    @mouseenter.stop="$emit('mouseenter')"
+    @mouseleave.stop="$emit('mouseleave')"
+  >
     <span class="-center">{{ name }}</span>
   </button>
 </template>

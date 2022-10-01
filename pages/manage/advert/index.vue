@@ -5,7 +5,7 @@
       <span>Crear Anuncio</span>
       <font-awesome-icon icon="fa-solid fa-circle-plus" color="#4F4F4F" />
     </button>
-    <CSummary
+    <Summary
       title="No cuentas con ningún anuncio creado"
       body="Todos tus anuncios creados aparecerán en esta sección."
     />
@@ -14,11 +14,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import CSummary from '@/components/CSummary.vue'
+import Summary from '@/components/Summary.vue'
 
 export default Vue.extend({
   name: 'ManageAdvertIndexPage',
-  components: { CSummary },
+  components: { Summary },
   layout: 'ManageUI',
   head: () => ({
     title: 'Anuncios - admin | Villakid',

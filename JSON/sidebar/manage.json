@@ -1,0 +1,61 @@
+[{
+    "name": "Resumen",
+    "nuxtLink": "/manage",
+    "nuxtLinkName": "manage",
+    "logo": "grid-primary.svg"
+  },
+  {
+    "name": "Alumnos",
+    "logo": "peoples-primary.svg",
+    "nuxtLinkName": "manage-student",
+    "child": [{
+        "name": "Inicial",
+        "nuxtLink": "/manage/student/inicial"
+      },
+      {
+        "name": "Primaria",
+        "nuxtLink": "/manage/student/primaria"
+      }
+    ]
+  },
+  {
+    "name": "Cursos",
+    "logo": "book-primary.svg",
+    "nuxtLinkName": "manage-course ",
+    "child": [{
+        "name": "Inicial",
+        "nuxtLink": "/manage/course/inicial"
+      },
+      {
+        "name": "Primaria",
+        "nuxtLink": "/manage/course/primaria"
+      }
+    ]
+  },
+  {
+    "name": "Profesores",
+    "logo": "people-primary.svg",
+    "nuxtLinkName": "manage-teacher",
+    "child": [{
+        "name": "Inicial",
+        "nuxtLink": "/manage/teacher/inicial"
+      },
+      {
+        "name": "Primaria",
+        "nuxtLink": "/manage/teacher/primaria"
+      }
+    ]
+  },
+  {
+    "name": "Reporte",
+    "nuxtLink": "/manage/report",
+    "nuxtLinkName": "manage-report",
+    "logo": "signal-primary.svg"
+  },
+  {
+    "name": "Anuncios",
+    "nuxtLink": "/manage/advert",
+    "nuxtLinkName": "manage-advert",
+    "logo": "campaign-primary.svg"
+  }
+]

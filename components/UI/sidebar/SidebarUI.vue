@@ -1,5 +1,5 @@
 <template>
-  <aside class="v-sidebar" :class="{ 'is-active': sideBar }">
+  <aside class="v-sidebar" :class="{ 'is-active': sideBar, 'show-sidebar': showSidebar }">
     <ul class="v-navbar">
       <Item
         v-for="item in sidebar"
@@ -13,7 +13,7 @@
       />
     </ul>
     <div class="wrapper-logout">
-      <button class="btn" @click.stop="sideBar = !sideBar">
+      <button @click.stop="sideBar = !sideBar">
         <img
           src="@/assets/img/icon/arrow-left.svg"
           alt="arrow-left-large"
@@ -47,7 +47,8 @@ export default Vue.extend({
     sidebar: {
       type: Array as PropType<ISidebarProps[]>,
       default: () => []
-    }
+    },
+    showSidebar: { type: Boolean, default: false }
   },
   data: () => ({
     sideBar: true,

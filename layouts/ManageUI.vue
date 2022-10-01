@@ -1,8 +1,11 @@
 <template>
   <div class="villakid-page">
     <header class="vk-header">
+      <button @click="showSidebar = !showSidebar">
+        <font-awesome-icon icon="fa-solid fa-bars" color="#7B7BCC" />
+      </button>
       <NuxtLink to="/">
-        <img src="@/assets/img/logos/villakid-logo.svg" alt="logo-villa-kid" />
+        <img :src="logo" alt="logo-villa-kid" />
       </NuxtLink>
       <nav class="vk-header-nav">
         <NuxtLink to="/manage/config">
@@ -10,7 +13,10 @@
           <p>Configuración</p>
         </NuxtLink>
         <button @click="handleSoport">
-          <font-awesome-icon icon="fa-solid fa-circle-question" color="#4F4F4F" />
+          <font-awesome-icon
+            icon="fa-solid fa-circle-question"
+            color="#4F4F4F"
+          />
           <p>Soporte</p>
         </button>
         <!-- <div class="popUp" :class="{ 'is-active': isSupport }">
@@ -54,97 +60,53 @@
       </nav>
     </header>
     <GridUIVue>
-      <SidebarUI :sidebar="sidebar" />
+      <SidebarUI :sidebar="sidebar" :show-sidebar="showSidebar" />
       <nuxt />
     </GridUIVue>
-    <CBackdrop />
+    <Backdrop />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import SidebarUI from '@/components/UI/sidebar/SidebarUI.vue'
-import GridUIVue from '@/components/UI/GridUI.vue';
-import CBackdrop from '@/components/CBackdrop.vue';
+import GridUIVue from '@/components/UI/GridUI.vue'
+import Backdrop from '@/components/Backdrop.vue'
+import manageJSON from '@/JSON/sidebar/manage.json'
 
 export default Vue.extend({
   name: 'ManageUI',
-  components: { SidebarUI, GridUIVue, CBackdrop },
+  components: { SidebarUI, GridUIVue, Backdrop },
   // middleware: "auth",
   data: () => ({
     isSupport: false,
-    sidebar: [
-      {
-        name: 'Resumen',
-        nuxtLink: '/manage',
-        nuxtLinkName: 'manage',
-        logo: 'grid-primary.svg',
-      },
-      {
-        name: 'Alumnos',
-        logo: 'peoples-primary.svg',
-        nuxtLinkName: 'manage-student',
-        child: [
-          {
-            name: 'Inicial',
-            nuxtLink: '/manage/student/inicial',
-          },
-          {
-            name: 'Primaria',
-            nuxtLink: '/manage/student/primaria',
-          },
-        ],
-      },
-      {
-        name: 'Cursos',
-        logo: 'book-primary.svg',
-        nuxtLinkName: 'manage-course ',
-        child: [
-          {
-            name: 'Inicial',
-            nuxtLink: '/manage/course/inicial',
-          },
-          {
-            name: 'Primaria',
-            nuxtLink: '/manage/course/primaria',
-          },
-        ],
-      },
-      {
-        name: 'Profesores',
-        logo: 'people-primary.svg',
-        nuxtLinkName: 'manage-teacher',
-        child: [
-          {
-            name: 'Inicial',
-            nuxtLink: '/manage/teacher/inicial',
-          }, 
-          {
-            name: 'Primaria',
-            nuxtLink: '/manage/teacher/primaria',
-          },
-        ],
-      },
-      {
-        name: 'Reporte',
-        nuxtLink: '/manage/report',
-        nuxtLinkName: 'manage-report',
-        logo: 'signal-primary.svg',
-      },
-      {
-        name: 'Anuncios',
-        nuxtLink: '/manage/advert',
-        nuxtLinkName: 'manage-advert',
-        logo: 'campaign-primary.svg',
-      },
-    ],
+    showSidebar: false,
+    sidebar: manageJSON,
+    logo: require('@/assets/img/logos/villakid-logo.svg'),
   }),
+  mounted() {
+    const logoLarge = require('@/assets/img/logos/villakid-logo.svg')
+    const logoSmall = require('@/assets/img/logos/villakid-logo-small.svg');
+
+    const getResize = () => {
+      if (window.innerWidth > 480) {
+        this.logo = logoLarge
+      } else {
+        this.logo = logoSmall
+      }
+    }
+    getResize()
+
+    window.addEventListener('resize', () => {
+      getResize()
+    })
+  },
   methods: {
     handleSoport() {
       this.isSupport = true
       this.$store.commit('SETBACKDROP', true)
-    }
-  }
+    },
+  },
 })
 </script>
 
@@ -160,37 +122,79 @@ export default Vue.extend({
   padding: 0 90px;
   border-bottom: 1px solid #e0e0e0;
   transform: rotate(0.05deg);
+  > button {
+    display: none;
+    svg {
+      font-size: 25px;
+    }
+  }
   &-nav {
     display: flex;
     gap: 3rem;
-    > a, > button {
+    > a,
+    > button {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 0;
       gap: 10px;
       transition: 300ms;
-      &:hover svg path, &:hover > p {
-        fill: #7B7BCC;
-        color: #7B7BCC;
+      &:hover svg path,
+      &:hover > p {
+        fill: #7b7bcc;
+        color: #7b7bcc;
       }
       > p {
         font-weight: 600;
         font-size: 16px;
         line-height: 22px;
-        color: #4F4F4F;
+        color: #4f4f4f;
         transition: 300ms;
       }
-      > svg, > svg path {
-        width: 24px;
-        height: 24px;
+      > svg {
+        font-size: 24px;
+      }
+      > svg path {
         transition: 300ms;
       }
     }
   }
   > a > img {
     height: 50px;
-    width: 191px;
+    width: max-content;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .villakid-page {
+    min-height: 100vh;
+  }
+  .vk-header {
+    padding: 0 20px;
+    height: 70px;
+    > button {
+      display: block;
+    }
+    &-nav {
+      display: flex;
+      gap: 1rem;
+      > a,
+      > button {
+        > p {
+          font-size: 12px;
+          line-height: 17px;
+        }
+        > svg {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .vk-header {
+    padding: 0 10px;
   }
 }
 </style>

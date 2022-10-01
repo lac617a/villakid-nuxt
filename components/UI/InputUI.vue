@@ -9,6 +9,7 @@
         ref="input"
         :value="value"
         class="v-input"
+        :placeholder="placeholder"
         :checked="checked"
         :type="changeType"
         @input.stop="onInput"
@@ -42,6 +43,7 @@ export default Vue.extend({
     name: { type: String, default: undefined },
     value: { type: String, default: undefined },
     label: { type: String, default: undefined },
+    placeholder: { type: String, default: undefined },
     labelColor: { type: String, default: 'grey-dark' },
   },
   data: () => ({

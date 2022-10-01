@@ -1,7 +1,7 @@
 <template>
   <div class="container -p:2">
     <h1 class="text-color-primary -bold">Reporte</h1>
-    <CSummary
+    <Summary
       title="No cuentas con ningún reporte creado"
       body="Todos tus reporte creados aparecerán en esta sección."
     />
@@ -10,11 +10,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import CSummary from '@/components/CSummary.vue'
+import Summary from '@/components/Summary.vue'
 
 export default Vue.extend({
   name: 'ManageReportIndexPage',
-  components: { CSummary },
+  components: { Summary },
   layout: 'ManageUI',
   head: () => ({
     title: 'Reporte - admin | Villakid',

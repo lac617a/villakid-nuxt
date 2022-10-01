@@ -46,7 +46,19 @@
   }
 
   // <-GAP->
-  .-gap\:#{$i} {gap: $i * 1rem !important;}
+  .-gap\:#{$i} {
+    gap: $i * 1rem !important;
+  }
+
+  // FontSize
+  .-fontSize2\:#{$i} {
+    font-size: 14px + $i * 2;
+    line-height: 18px + $i * 2;
+  }
+  .-fontSize4\:#{$i} {
+    font-size: 14px + $i * 4;
+    line-height: 18px + $i * 4;
+  }
 }
 
 @each $name, $color in $colors {
