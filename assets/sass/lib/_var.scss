@@ -86,3 +86,47 @@ $colors: (
   grey-dark: $color-grey-dark,
   grey-1: $color-grey,
 );
+
+// FLEXBOX
+$flexbox: (
+  flex-direction: (
+    row: row,
+    column: column,
+    rowReverse: row-reverse,
+    columnReverse: column-reverse
+  ),
+  flex-wrap: (
+    wrap: wrap,
+    nowrap: nowrap,
+    reverse: wrap-reverse
+  ),
+  justify-content: (
+    center: center,
+    flexEnd: flex-end,
+    flexStart: flex-start,
+    around: space-around,
+    evenly: space-evenly,
+    between: space-between
+  ),
+  justify-self: (
+    center: center,
+    flexEnd: flex-end,
+    flexStart: flex-start,
+  ),
+  align-items: (
+    center: center,
+    stretch: stretch,
+    baseline: baseline,
+    flexEnd: flex-end,
+    flexStart: flex-start
+  ),
+  align-content: (
+    center: center,
+    stretch: stretch,
+    flexEnd: flex-end,
+    flexStart: flex-start,
+    around: space-around,
+    between: space-between
+  )
+);
+

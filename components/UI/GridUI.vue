@@ -1,5 +1,5 @@
 <template>
-  <div class="-row -flex:nowrap">
+  <div class="-row -flex-wrap:nowrap!">
     <slot />
   </div>
 </template>

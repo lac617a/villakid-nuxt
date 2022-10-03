@@ -10,7 +10,7 @@ $default-width-sidebar: 217px;
   position: relative;
 
   background-color: $villa-kid-color-azul-violaseo;
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   overflow-x: hidden;
   overflow-y: auto;
   width: $default-width-sidebar - 123;

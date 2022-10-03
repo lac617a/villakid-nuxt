@@ -1,6 +1,6 @@
 <template>
   <div class="container -p:2">
-    <div class="-flex -justifyContentSpace">
+    <div class="-flex:justify-content:between -align-items:center">
       <h1 class="text-color-primary -bold">
         Cursos - Nivel {{ hanldeCapitalize() }} 
       </h1>
@@ -11,7 +11,7 @@
 
     <Summary
       title="No tienes ningún curso registrado"
-      body="Por favor,haga clic en el botón superior para poder crear los cursos según corresponda."
+      body="Por favor, haga clic en el botón superior para poder crear los cursos según corresponda."
     />
   </div>
 </template>

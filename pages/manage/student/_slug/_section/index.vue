@@ -4,17 +4,17 @@
     <transition name="fade" mode="in-out">
       <Modal
         v-if="$store.state.isBackdrop && isModal"
-        title="Crear grado"
+        title="Crear Sección"
         with-header
         @close="isModal = $event"
       >
         <div class="-mBlock:2">
           <div class="-flex:align-items:center -justify-content:flexEnd -gap:2">
-            <label for="name">Nombre del grado:</label>
+            <label for="name">Nombre de la sección:</label>
             <InputUI
               id="name"
               name="nameGrade"
-              placeholder="Introduce el nombre del grado"
+              placeholder="Introduce el nombre de la sección"
               type="text"
             />
           </div>
@@ -51,11 +51,19 @@
     <!-- MODAL-REMOVE -->
     <transition name="fade" mode="in-out">
       <Modal v-if="$store.state.isBackdrop && isModalRemoveData">
-        <div class="-flex:flex-direction:column -alig-items:center -gap:4 -pInline:3 -center">
+        <div
+          class="
+            -flex:flex-direction:column
+            -alig-items:center
+            -gap:4
+            -pInline:3
+            -center
+          "
+        >
           <div>
-            <h2 class="-bold -mBottom:1">Eliminar grado creado</h2>
+            <h2 class="-bold -mBottom:1">Eliminar sección</h2>
             <p class="-fontSize2:2">
-              ¿Estás seguro que quieres eliminar el grado?
+              ¿Estás seguro que quieres eliminar la sección?
             </p>
           </div>
           <div class="-flex -gap:1">
@@ -83,7 +91,15 @@
     <!-- MODAL-NOT-REMOVE -->
     <transition name="fade" mode="in-out">
       <Modal v-if="$store.state.isBackdrop && isModalNotRemoveData">
-        <div class="-flex:flex-direction:column -align-items:center -gap:4 -pInline:3 -center">
+        <div
+          class="
+            -flex:flex-direction:column
+            -align-items:center
+            -gap:4
+            -pInline:3
+            -center
+          "
+        >
           <div>
             <h2 class="-bold -mBottom:1">Eliminar grado</h2>
             <p class="-fontSize2:2">
@@ -105,27 +121,23 @@
     <!-- END-MODAL-NOT-REMOVE -->
 
     <div class="v-header -flex:justify-content:between -align-items:center">
-      <h1 class="text-color-primary -bold">Nivel {{ hanldeCapitalize }}</h1>
+      <h1 class="text-color-primary -bold">
+        Secciones - {{ hanldeCapitalize }}
+      </h1>
       <div class="-flex">
         <ButtonUI
-          name="Crear Grado"
+          name="Agregar Sección"
           type="button"
           color="secondary"
           @click="handleShowModal('create')"
         />
       </div>
     </div>
-
-    <Summary
-      v-if="false"
-      title="No tienes ningún grado registrado"
-      body="Por favor, haga clic en el botón superior para poder empezar a crear grados según corresponda."
-    />
-    <div v-else class="-mBlock:2">
+    <div class="-mBlock:2">
       <CardStudent
-        title="3 años de edad"
-        button="Seccion"
-        :nuxt-link="`/manage/student/${$route.params.slug}/`"
+        title="3 Años Sección A"
+        button="Ver alumnos"
+        :nuxt-link="`/manage/student/${$route.params.slug}/${$route.params.section}/`"
         @handleChangeData="handleChangeData"
         @handleRemoveData="handleRemoveData"
       />
@@ -136,25 +148,19 @@
 </template>
 
 <script lang="ts">
-// @currentPage="count = $event"
-// @transitionName="transitionName = $event"
-// @transitionAnimated="transitionAnimated = $event"
-
 import Vue from 'vue'
-import Summary from '@/components/Summary.vue'
 import Modal from '@/components/Modal.vue'
-import ModalSuccess from '@/components/modals/ModalSuccess.vue'
 import capitalize from '@/utils/capitalize'
-import ButtonUI from '@/components/UI/ButtonUI.vue'
 import InputUI from '@/components/UI/InputUI.vue'
 import Paginator from '@/components/Paginator.vue'
+import ButtonUI from '@/components/UI/ButtonUI.vue'
 import CardStudent from '@/components/cards/CardStudent.vue'
+import ModalSuccess from '@/components/modals/ModalSuccess.vue'
 
 export default Vue.extend({
-  name: 'ManageStudentSlugPage',
+  name: 'ManageStudentSlugSectionPage',
   components: {
     Modal,
-    Summary,
     InputUI,
     ButtonUI,
     Paginator,
@@ -170,12 +176,12 @@ export default Vue.extend({
   }),
   head() {
     return {
-      title: `Alumnos nivel ${this.$route.params.slug} - admin | Villakid`,
+      title: `Alumnos nivel ${this.$route.params.section} - admin | Villakid`,
     }
   },
   computed: {
     hanldeCapitalize(): string {
-      return capitalize(this.$route.params.slug)
+      return capitalize(this.$route.params.section)
     },
   },
   methods: {

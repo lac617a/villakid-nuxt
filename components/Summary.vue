@@ -1,5 +1,5 @@
 <template>
-  <div class="summary -flexCenterCenter -flex:column -mAuto -gap:1">
+  <div class="summary -flexCenterCenter -flex-direction:column -mAuto -gap:1">
     <p class="-semiBold">{{ title }}</p>
     <p class="-center">{{ body }}</p>
   </div>

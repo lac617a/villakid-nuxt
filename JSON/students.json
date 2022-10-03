@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "name": "Figueroa Hidalgo, Lucero Yasmin",
+    "email": "lucerofiguero@gmail.com",
+    "parent": "Hector Figueroa",
+    "phone": "976633461",
+    "state": "active"
+  },
+  {
+    "id": "2",
+    "name": "Figueroa Hidalgo, Lucero Yasmin",
+    "email": "lucerofiguero@gmail.com",
+    "parent": "Hector Figueroa",
+    "phone": "976633461",
+    "state": "active"
+  },
+  {
+    "id": "3",
+    "name": "Figueroa Hidalgo, Lucero Yasmin",
+    "email": "lucerofiguero@gmail.com",
+    "parent": "Hector Figueroa",
+    "phone": "976633461",
+    "state": "active"
+  },
+  {
+    "id": "4",
+    "name": "Figueroa Hidalgo, Lucero Yasmin",
+    "email": "lucerofiguero@gmail.com",
+    "parent": "Hector Figueroa",
+    "phone": "976633461",
+    "state": "active"
+  },
+  {
+    "id": "5",
+    "name": "Figueroa Hidalgo, Lucero Yasmin",
+    "email": "lucerofiguero@gmail.com",
+    "parent": "Hector Figueroa",
+    "phone": "976633461",
+    "state": "active"
+  }
+]

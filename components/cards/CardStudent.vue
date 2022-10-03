@@ -5,7 +5,7 @@
         <input v-model="value" :readonly="!isEdit" type="text" />
       </div>
       <div class="v-card__option">
-        <NuxtLink v-if="!isEdit" to="/">
+        <NuxtLink v-if="!isEdit" :to="`${nuxtLink}${title}`">
           <ButtonUI
             type="button"
             :name="button"
@@ -61,6 +61,7 @@ export default Vue.extend({
   name: 'CardStudent',
   components: { ButtonUI },
   props: {
+    nuxtLink: { type: String, default: '/' },
     button: { type: String, default: 'unknown' },
     title: { type: String, default: 'Sin título' },
   },

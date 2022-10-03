@@ -32,10 +32,6 @@
   margin-right: auto;
 }
 
-.-mBgBottom {
-  margin-bottom: $spaceBg;
-}
-
 // show & hide
 .-hide {
   display: none;
@@ -76,48 +72,6 @@
 .-flex {
   display: flex;
 }
-
-.-flex\:row {
-  flex-direction: row;
-}
-
-.-flex\:row-reverse {
-  flex-direction: row-reverse;
-}
-
-.-flex\:column {
-  flex-direction: column;
-}
-.-flex\:column-reverse {
-  flex-direction: column-reverse;
-}
-
-.-flex\:nowrap {
-  flex-wrap: nowrap !important;
-}
-
-.-flex\:wrap {
-  flex-wrap: wrap;
-}
-
-.-flex\:wrap-reverse {
-  flex-wrap: wrap-reverse;
-}
-
-.-flexAlignCenter {
-  align-items: center;
-}
-
-.-justifyContentCenter {
-  justify-content: center;
-}
-.-justifyContentSpace {
-  justify-content: space-between;
-}
-.-justifyContentEnd {
-  justify-content: flex-end;
-}
-
 
 .-flexCenterCenter {
   display: flex;

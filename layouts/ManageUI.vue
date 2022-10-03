@@ -112,8 +112,9 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .vk-header {
-  position: relative;
-  z-index: 1;
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   height: 80px;
   justify-content: space-between;

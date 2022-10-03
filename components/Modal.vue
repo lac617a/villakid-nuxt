@@ -1,14 +1,19 @@
 <template>
-  <div class="v-modal">
-    <div class="v-modal-body">
-      <div v-if="withHeader" class="v-modal__header">
-        <h2 class="-bold">{{title}}</h2>
-        <button type="button" @click.stop="handleClose">
-          <font-awesome-icon icon="fa-solid fa-circle-xmark" color="#9494D8" />
-        </button>
-      </div>
-      <div class="v-modal__content">
-        <slot />
+  <div class="v-modal" role="dialog" @click.capture="handleIsBackdrop">
+    <div class="v-modal-dialog" role="document">
+      <div class="v-modal-content">
+        <div v-if="withHeader" class="v-modal__header">
+          <h2 class="-bold">{{ title }}</h2>
+          <button type="button" @click.stop="handleClose">
+            <font-awesome-icon
+              icon="fa-solid fa-circle-xmark"
+              color="#9494D8"
+            />
+          </button>
+        </div>
+        <div class="v-modal__content">
+          <slot />
+        </div>
       </div>
     </div>
   </div>
@@ -18,17 +23,22 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'CModal',
+  name: 'ContainerModal',
   props: {
     title: { type: String, default: undefined },
-    withHeader: { type: Boolean, default: false }
+    withHeader: { type: Boolean, default: false },
   },
   methods: {
     handleClose() {
       this.$store.commit('SETBACKDROP', false)
       this.$emit('close', false)
-    }
-  }
+    },
+    handleIsBackdrop(e: Event) {
+      if ((e.target as HTMLDivElement).getAttribute('role') === 'dialog') {
+        this.handleClose()
+      }
+    },
+  },
 })
 </script>
 
@@ -43,32 +53,35 @@ label {
   font-size: 18px;
   line-height: 25px;
 }
-input {
-  padding: 8px 18px !important;
-}
+
 .v-modal {
   position: fixed;
   z-index: 110;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 40px;
-  background: #ffffff;
-  border-radius: 30px;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
+  inset: 0 0 0 0;
   transition: 300ms;
-  @include mediaQueriesLg() {
-    margin: 0 1rem;
-    right: 0;
-    left: 0;
-    top: 30%;
-    transform: none;
-    width: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .v-field:hover {
+    border-color: #9494d8;
   }
-  @include mediaQueriesMd() {
-    padding: 20px;
+  input {
+    padding: 8px 18px !important;
+  }
+  &-dialog {
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 30px;
+
+    max-width: 800px;
+    width: 100%;
+    margin: 10% auto 1rem;
+    transition: 300ms;
+    @include mediaQueriesLg() {
+      width: 90%;
+    }
+    @include mediaQueriesMd() {
+      padding: 20px;
+    }
   }
   &__header {
     display: flex;

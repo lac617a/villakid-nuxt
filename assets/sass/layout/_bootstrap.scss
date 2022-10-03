@@ -47,7 +47,7 @@
 
   // <-GAP->
   .-gap\:#{$i} {
-    gap: $i * 1rem !important;
+    gap: $i * 1rem;
   }
 
   // FontSize
@@ -67,5 +67,20 @@
   }
   .bg-color-#{$name} {
     background-color: #{$color} !important;
+  }
+}
+
+@each $property, $value in $flexbox {
+  @each $element, $item in $value {
+    .-flex\:#{$property}\:#{$element} {
+      display: flex;
+      #{$property}: #{$item};
+    }
+    .-#{$property}\:#{$element} {
+      #{$property}: #{$item};
+    }
+    .-#{$property}\:#{$element}\! {
+      #{$property}: #{$item} !important;
+    }
   }
 }
