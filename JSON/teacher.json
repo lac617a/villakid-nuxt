@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "name": "Figueroa Hidalgo, Lucero Yasmin",
+    "email": "lucerofiguero@gmail.com",
+    "bio": "Soy profesor del curso",
+    "state": "active"
+  },
+  {
+    "id": "2",
+    "name": "Figueroa Hidalgo, Lucero Yasmin",
+    "email": "lucerofiguero@gmail.com",
+    "bio": "Soy profesor del curso",
+    "state": "active"
+  },
+  {
+    "id": "3",
+    "name": "Figueroa Hidalgo, Lucero Yasmin",
+    "email": "lucerofiguero@gmail.com",
+    "bio": "Soy profesor del curso",
+    "state": "active"
+  },
+  {
+    "id": "4",
+    "name": "Figueroa Hidalgo, Lucero Yasmin",
+    "email": "lucerofiguero@gmail.com",
+    "bio": "Soy profesor del curso",
+    "state": "active"
+  },
+  {
+    "id": "5",
+    "name": "Figueroa Hidalgo, Lucero Yasmin",
+    "email": "lucerofiguero@gmail.com",
+    "bio": "Soy profesor del curso",
+    "state": "active"
+  }
+]

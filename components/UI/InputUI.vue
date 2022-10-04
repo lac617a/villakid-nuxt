@@ -7,8 +7,8 @@
       <input
         :id="name"
         ref="input"
-        :value="value"
         class="v-input"
+        :value="value"
         :placeholder="placeholder"
         :checked="checked"
         :type="changeType"

@@ -382,6 +382,7 @@ summary,
 textarea {
   -ms-touch-action: manipulation;
       touch-action: manipulation;
+  outline: none;
 }
 
 table {

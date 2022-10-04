@@ -1,6 +1,6 @@
 <template>
   <div class="v-modal" role="dialog" @click.capture="handleIsBackdrop">
-    <div class="v-modal-dialog" role="document">
+    <div class="v-modal-dialog" role="document" :style="{maxWidth}">
       <div class="v-modal-content">
         <div v-if="withHeader" class="v-modal__header">
           <h2 class="-bold">{{ title }}</h2>
@@ -27,6 +27,7 @@ export default Vue.extend({
   props: {
     title: { type: String, default: undefined },
     withHeader: { type: Boolean, default: false },
+    maxWidth: { type: String, default: '800px' },
   },
   methods: {
     handleClose() {
@@ -61,8 +62,18 @@ label {
   transition: 300ms;
   overflow-x: hidden;
   overflow-y: auto;
+  @include mediaQueriesSm() {
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+  }
   .v-field:hover {
     border-color: #9494d8;
+  }
+  .v-wrap-input {
+    @include mediaQueriesMd() {
+      max-width: 100% !important;
+    }
   }
   input {
     padding: 8px 18px !important;

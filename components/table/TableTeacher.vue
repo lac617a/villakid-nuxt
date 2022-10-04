@@ -1,38 +1,62 @@
 <template>
-  <div class="table-student">
-    <!-- MODAL-CREATE -->
+  <div class="table-teacher">
+    <!-- MODAL-EDIT -->
     <transition name="fade" mode="in-out">
       <Modal
         v-if="$store.state.isBackdrop && isModalEdit"
-        title="Crear alumno"
+        title="Crear profesor"
         with-header
         @close="isModalEdit = $event"
       >
         <div class="-flex:flex-direction:column -gap:2 -mBlock:2">
-          <div class="-flex:align-items:center -gap:4">
-            <label for="code" class="-textRight">Código del alumno:</label>
+          <div class="-flex:align-items:center t-profile">
+            <div class="-pRelative">
+              <img
+                v-if="teacher.picture !== ''"
+                :src="teacher.picture"
+                alt="teacher"
+                class="picture"
+              />
+              <img
+                v-else
+                src="@/assets/img/icon/camera-add.svg"
+                alt="camera-add"
+              />
+              <input
+                type="file"
+                accept="image/*"
+                @change.capture="handleGetPicture"
+              />
+            </div>
+            <button class="-pRelative">
+              <input
+                type="file"
+                accept="image/*"
+                @change.capture="handleGetPicture"
+              />
+              <p v-if="teacher.picture !== ''" class="-fontSize2:1 -bold">
+                Cambiar foto de perfil
+              </p>
+            </button>
             <p class="-medium -fontSize2:1">HRJKL982</p>
           </div>
-          <div class="-flex:align-items:center -justify-content:flexEnd -gap:2">
-            <label for="name" class="-textRight">Nombre del alumno:</label>
-            <InputUI
-              id="name"
-              v-model.trim="student.name"
-              :value="student.name"
-              type="text"
-              name="name"
-              placeholder="Introduce el nombre del alumno"
-            />
+          <div class="-flex:justify-content:flexEnd -gap:2">
+            <label for="password" class="-textRight">Biografía:</label>
+            <textarea
+              v-model.trim="teacher.bio"
+              rows="5"
+              placeholder="Introduce una breve descripción"
+            >
+            </textarea>
           </div>
           <div class="-flex:align-items:center -justify-content:flexEnd -gap:2">
-            <label for="parent" class="-textRight">Padre/Apoderado:</label>
+            <label for="password" class="-textRight">Contraseña:</label>
             <InputUI
-              id="parent"
-              v-model.trim="student.parent"
-              :value="student.parent"
+              id="password"
+              v-model.trim="teacher.password"
               type="text"
-              name="parent"
-              placeholder="Introduce el nombre del padre/apoderado"
+              name="password"
+              placeholder="Introduce tu nueva contraseña"
             />
           </div>
           <div class="-flex:align-items:center -justify-content:flexEnd -gap:2">
@@ -41,48 +65,16 @@
             >
             <InputUI
               id="email"
-              v-model.trim="student.email"
-              :value="student.email"
+              v-model.trim="teacher.email"
               type="email"
               name="email"
               placeholder="Introduce el correo electrónico"
             />
           </div>
-          <div class="-flex:align-items:center -justify-content:flexEnd -gap:2">
-            <label for="phone" class="-textRight">Teléfono del padre:</label>
-            <InputUI
-              id="phone"
-              v-model.trim="student.phone"
-              :value="student.phone"
-              type="text"
-              name="phone"
-              placeholder="Introduce el número de teléfono"
-            />
-          </div>
-          <div
-            class="
-              pwd
-              -pRelative
-              -flex:align-items:center
-              -justify-content:flexEnd
-              -gap:2
-            "
-          >
-            <label for="password" class="-textRight">Contraseña:</label>
-            <InputUI
-              id="password"
-              v-model.trim="student.password"
-              :value="student.password"
-              type="text"
-              name="password"
-              placeholder="Introduce tu nueva contraseña"
-            />
-            <button>Generar automaticamente</button>
-          </div>
           <div class="-flex:align-items:center -justify-content-evenly -gap:2">
             <label for="password" class="-textRight">Estado:</label>
             <SelectUI
-              :placeholder="student.state"
+              :placeholder="teacher.state"
               :suggestion-list="['Active', 'Inactive']"
             />
           </div>
@@ -92,21 +84,14 @@
             name="Cancelar"
             type="button"
             fill="outline"
-            style="font-size: 16px !important"
             class="btn -pInline:2"
             @click="handleRemoveModal"
           />
-          <ButtonUI
-            name="Guardar"
-            type="button"
-            style="font-size: 16px !important"
-            class="btn -pInline:3"
-            @click="handleChangeDataModal"
-          />
+          <ButtonUI name="Crear" type="button" class="btn -pInline:3" />
         </div>
       </Modal>
     </transition>
-    <!-- END-MODAL-CREATE -->
+    <!-- END-MODAL-EDIT -->
 
     <!-- MODAL-SAVECHANGED -->
     <transition name="fade" mode="in-out">
@@ -141,14 +126,12 @@
               type="button"
               color="secondary"
               fill="outline"
-              style="font-size: 18px"
               @click="handleRemoveModal"
             />
             <ButtonUI
               name="Eliminar"
               type="button"
               color="secondary"
-              style="font-size: 18px"
               @click="handleRemoveModal"
             />
           </div>
@@ -159,9 +142,15 @@
 
     <Table
       :suggestion-list="suggestionList"
-      :heading-list="['Nombre Alumnos', 'Correo', 'Padre/apoderado', 'Teléfono', 'Estado', 'Editar']"
-      @editData="handleShowModal('edit-student', $event)"
-      @removeData="handleShowModal('remove-student', $event)"
+      :heading-list="[
+        'Nombre Alumnos',
+        'Correo',
+        'Biografía',
+        'Estado',
+        'Editar',
+      ]"
+      @editData="handleShowModal('edit-teacher', $event)"
+      @removeData="handleShowModal('remove-teacher', $event)"
     />
   </div>
 </template>
@@ -180,16 +169,16 @@ import Table from '@/components/table/Table.vue'
 interface ITableStudentProp {
   code: string
   id: string
+  bio: string
   name: string
+  picture: string | undefined
   email: string
-  parent: string
-  phone: string
-  password: string
   state: string
+  password: string
 }
 
 export default Vue.extend({
-  name: 'TableStudent',
+  name: 'TableTeacher',
   components: {
     Modal,
     Table,
@@ -209,15 +198,15 @@ export default Vue.extend({
       isModalEdit: false,
       isModalChangedataStudent: false,
       isModalRemoveStudent: false,
-      student: {
+      teacher: {
         code: '',
+        picture: '',
         id: '',
+        bio: '',
         name: '',
-        email: '',
-        parent: '',
-        phone: '',
-        password: '',
         state: '',
+        email: '',
+        password: '',
       } as ITableStudentProp,
     }
   },
@@ -225,14 +214,14 @@ export default Vue.extend({
     handleShowModal(name: string, id?: string) {
       this.$store.commit('SETBACKDROP', true)
       switch (name) {
-        case 'edit-student':
+        case 'edit-teacher':
           this.isModalEdit = true
-          this.student = this.suggestionList.filter((sug) => sug.id === id)[0]
+          this.teacher = this.suggestionList.filter((sug) => sug.id === id)[0]
           break
-        case 'save-student':
+        case 'save-teacher':
           this.isModalChangedataStudent = true
           break
-        case 'remove-student':
+        case 'remove-teacher':
           this.isModalRemoveStudent = true
           break
       }
@@ -245,7 +234,19 @@ export default Vue.extend({
     },
     handleChangeDataModal() {
       this.handleRemoveModal()
-      this.handleShowModal('save-student')
+      this.handleShowModal('save-teacher')
+    },
+    handleGetPicture(e: Event) {
+      const file = (e.target as HTMLInputElement).files?.item(0)
+
+      const fileOnload = (e: any) => {
+        const result = e.target.result
+        this.teacher.picture = result
+      }
+
+      const reader = new FileReader()
+      reader.onload = fileOnload
+      reader.readAsDataURL(file as unknown as Blob)
     },
   },
 })

@@ -15,12 +15,7 @@ Tags: PWA, Villakid
 // @import "lib/fonts";
 @import "lib/var";
 @import "lib/mixin";
-
-// layout
 @import "layout/bootstrap_reboot";
-@import "layout/bootstrap";
-@import "layout/site";
-@import "layout/grid";
 
 // base
 @import "base/typography";
@@ -28,6 +23,11 @@ Tags: PWA, Villakid
 @import "base/buttons";
 @import "base/animation";
 @import "base/icons";
+
+// layout
+@import "layout/bootstrap";
+@import "layout/site";
+@import "layout/grid";
 
 // components
 @import "components/404";

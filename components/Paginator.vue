@@ -24,12 +24,12 @@ export default Vue.extend({
   },
   data: () => ({
     countPage: 1,
-    transitionName: 'slide-left',
+    transitionName: 'slide-right',
     transitionAnimated: false,
   }),
   watch: {
     countPage() {
-      this.$emit('currentPage', this.currentPage)
+      this.$emit('currentPage', this.countPage)
       this.$emit('transitionName', this.transitionName)
       this.$emit('transitionAnimated', this.transitionAnimated)
     }

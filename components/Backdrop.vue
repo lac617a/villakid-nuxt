@@ -28,7 +28,7 @@ export default Vue.extend({
 .backdrop {
   transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1);
   &.show {
-    position: absolute;
+    position: fixed;
     inset: 0 0 0 0;
     width: 100%;
     height: 100%;

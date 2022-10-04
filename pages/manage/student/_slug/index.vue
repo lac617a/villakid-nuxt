@@ -24,16 +24,10 @@
             name="Cancelar"
             type="button"
             fill="outline"
-            style="font-size: 18px"
             class="btn -pInline:2"
             @click="handleRemoveModal"
           />
-          <ButtonUI
-            name="Crear"
-            type="button"
-            style="font-size: 18px"
-            class="btn -pInline:3"
-          />
+          <ButtonUI name="Crear" type="button" class="btn -pInline:3" />
         </div>
       </Modal>
     </transition>
@@ -51,7 +45,15 @@
     <!-- MODAL-REMOVE -->
     <transition name="fade" mode="in-out">
       <Modal v-if="$store.state.isBackdrop && isModalRemoveData">
-        <div class="-flex:flex-direction:column -alig-items:center -gap:4 -pInline:3 -center">
+        <div
+          class="
+            -flex:flex-direction:column
+            -alig-items:center
+            -gap:4
+            -pInline:3
+            -center
+          "
+        >
           <div>
             <h2 class="-bold -mBottom:1">Eliminar grado creado</h2>
             <p class="-fontSize2:2">
@@ -64,14 +66,12 @@
               type="button"
               color="secondary"
               fill="outline"
-              style="font-size: 18px"
               @click="handleRemoveModal"
             />
             <ButtonUI
               name="Eliminar"
               type="button"
               color="secondary"
-              style="font-size: 18px"
               @click="handleRemoveModal"
             />
           </div>
@@ -83,7 +83,15 @@
     <!-- MODAL-NOT-REMOVE -->
     <transition name="fade" mode="in-out">
       <Modal v-if="$store.state.isBackdrop && isModalNotRemoveData">
-        <div class="-flex:flex-direction:column -align-items:center -gap:4 -pInline:3 -center">
+        <div
+          class="
+            -flex:flex-direction:column
+            -align-items:center
+            -gap:4
+            -pInline:3
+            -center
+          "
+        >
           <div>
             <h2 class="-bold -mBottom:1">Eliminar grado</h2>
             <p class="-fontSize2:2">
@@ -122,15 +130,25 @@
       body="Por favor, haga clic en el botón superior para poder empezar a crear grados según corresponda."
     />
     <div v-else class="-mBlock:2">
-      <CardStudent
-        title="3 años de edad"
-        button="Seccion"
-        :nuxt-link="`/manage/student/${$route.params.slug}/`"
-        @handleChangeData="handleChangeData"
-        @handleRemoveData="handleRemoveData"
-      />
+      <transition :name="transitionName" mode="out-in">
+        <template v-if="transitionAnimated">
+          <CardStudent
+            title="3 años de edad"
+            button="Seccion"
+            :nuxt-link="`/manage/student/${$route.params.slug}/`"
+            @handleChangeData="handleChangeData"
+            @handleRemoveData="handleRemoveData"
+          />
+        </template>
+        <LoaderCircle v-else />
+      </transition>
 
-      <Paginator current-page="1" />
+      <Paginator
+        current-page="1"
+        @currentPage="currentPage = $event"
+        @transitionName="transitionName = $event"
+        @transitionAnimated="transitionAnimated = $event"
+      />
     </div>
   </div>
 </template>
@@ -141,14 +159,15 @@
 // @transitionAnimated="transitionAnimated = $event"
 
 import Vue from 'vue'
-import Summary from '@/components/Summary.vue'
 import Modal from '@/components/Modal.vue'
-import ModalSuccess from '@/components/modals/ModalSuccess.vue'
 import capitalize from '@/utils/capitalize'
-import ButtonUI from '@/components/UI/ButtonUI.vue'
+import Summary from '@/components/Summary.vue'
 import InputUI from '@/components/UI/InputUI.vue'
 import Paginator from '@/components/Paginator.vue'
+import ButtonUI from '@/components/UI/ButtonUI.vue'
 import CardStudent from '@/components/cards/CardStudent.vue'
+import ModalSuccess from '@/components/modals/ModalSuccess.vue'
+import LoaderCircle from '~/components/loadings/LoaderCircle.vue'
 
 export default Vue.extend({
   name: 'ManageStudentSlugPage',
@@ -160,6 +179,7 @@ export default Vue.extend({
     Paginator,
     CardStudent,
     ModalSuccess,
+    LoaderCircle,
   },
   layout: 'ManageUI',
   data: () => ({
@@ -167,6 +187,11 @@ export default Vue.extend({
     isModalChangeData: false,
     isModalRemoveData: false,
     isModalNotRemoveData: false,
+
+    // PAGINATION's
+    currentPage: 1,
+    transitionName: 'slide-right',
+    transitionAnimated: true,
   }),
   head() {
     return {
@@ -176,6 +201,13 @@ export default Vue.extend({
   computed: {
     hanldeCapitalize(): string {
       return capitalize(this.$route.params.slug)
+    },
+  },
+  watch: {
+    currentPage() {
+      setTimeout(() => {
+        this.transitionAnimated = true
+      }, 1000)
     },
   },
   methods: {
@@ -233,14 +265,34 @@ export default Vue.extend({
     height: 80%;
   }
 }
+
 .v-modal__content {
   display: grid;
   padding: 1rem 0;
   justify-self: flex-end;
+  @include mediaQueriesMd() {
+    > div div {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 1rem;
+    }
+  }
+
   &-footer {
     display: flex;
     gap: 1rem;
     justify-self: flex-end;
+    @include mediaQueriesSm() {
+      padding: 0 !important;
+      justify-self: center;
+      width: 100%;
+    }
+    button.btn {
+      @include mediaQueriesSm() {
+        padding: 7px !important;
+        width: max-content;
+      }
+    }
   }
 }
 </style>

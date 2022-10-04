@@ -1,5 +1,5 @@
 <template>
-  <Modal style="max-width: 500px">
+  <Modal max-width="500px">
     <div class="-flex:flex-direction:column -align-items:center -gap:2 -center">
       <div>
         <h2 class="-bold">{{title}}</h2>
@@ -10,7 +10,7 @@
         type="button"
         color="secondary"
         class="btn -pInline:2"
-        style="font-size: 18px; max-width: 80%; width: 100%"
+        style="max-width: 80%; width: 100%"
         @click="$emit('success')"
       />
     </div>

@@ -24,16 +24,10 @@
             name="Cancelar"
             type="button"
             fill="outline"
-            style="font-size: 18px"
             class="btn -pInline:2"
             @click="handleRemoveModal"
           />
-          <ButtonUI
-            name="Crear"
-            type="button"
-            style="font-size: 18px"
-            class="btn -pInline:3"
-          />
+          <ButtonUI name="Crear" type="button" class="btn -pInline:3" />
         </div>
       </Modal>
     </transition>
@@ -72,14 +66,12 @@
               type="button"
               color="secondary"
               fill="outline"
-              style="font-size: 18px"
               @click="handleRemoveModal"
             />
             <ButtonUI
               name="Eliminar"
               type="button"
               color="secondary"
-              style="font-size: 18px"
               @click="handleRemoveModal"
             />
           </div>
@@ -112,7 +104,7 @@
             type="button"
             color="secondary"
             class="btn -pInline:2"
-            style="font-size: 18px; max-width: 50%; width: 100%"
+            style="max-width: 50%; width: 100%"
             @click="handleRemoveModal"
           />
         </div>
@@ -134,15 +126,25 @@
       </div>
     </div>
     <div class="-mBlock:2">
-      <CardStudent
-        title="3 Años Sección A"
-        button="Ver alumnos"
-        :nuxt-link="`/manage/student/${$route.params.slug}/${$route.params.section}/`"
-        @handleChangeData="handleChangeData"
-        @handleRemoveData="handleRemoveData"
-      />
+      <transition :name="transitionName" mode="out-in">
+        <template v-if="transitionAnimated">
+          <CardStudent
+            title="3 Años Sección A"
+            button="Ver alumnos"
+            :nuxt-link="`/manage/student/${$route.params.slug}/${$route.params.section}/`"
+            @handleChangeData="handleChangeData"
+            @handleRemoveData="handleRemoveData"
+          />
+        </template>
+        <LoaderCircle v-else />
+      </transition>
 
-      <Paginator current-page="1" />
+      <Paginator
+        current-page="1"
+        @currentPage="currentPage = $event"
+        @transitionName="transitionName = $event"
+        @transitionAnimated="transitionAnimated = $event"
+      />
     </div>
   </div>
 </template>
@@ -156,6 +158,7 @@ import Paginator from '@/components/Paginator.vue'
 import ButtonUI from '@/components/UI/ButtonUI.vue'
 import CardStudent from '@/components/cards/CardStudent.vue'
 import ModalSuccess from '@/components/modals/ModalSuccess.vue'
+import LoaderCircle from '~/components/loadings/LoaderCircle.vue'
 
 export default Vue.extend({
   name: 'ManageStudentSlugSectionPage',
@@ -166,6 +169,7 @@ export default Vue.extend({
     Paginator,
     CardStudent,
     ModalSuccess,
+    LoaderCircle,
   },
   layout: 'ManageUI',
   data: () => ({
@@ -173,6 +177,11 @@ export default Vue.extend({
     isModalChangeData: false,
     isModalRemoveData: false,
     isModalNotRemoveData: false,
+
+    // PAGINATION's
+    currentPage: 1,
+    transitionName: 'slide-right',
+    transitionAnimated: true,
   }),
   head() {
     return {
@@ -182,6 +191,13 @@ export default Vue.extend({
   computed: {
     hanldeCapitalize(): string {
       return capitalize(this.$route.params.section)
+    },
+  },
+  watch: {
+    currentPage() {
+      setTimeout(() => {
+        this.transitionAnimated = true
+      }, 1000)
     },
   },
   methods: {
@@ -243,10 +259,29 @@ export default Vue.extend({
   display: grid;
   padding: 1rem 0;
   justify-self: flex-end;
+  @include mediaQueriesMd() {
+    > div div {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 1rem;
+    }
+  }
+
   &-footer {
     display: flex;
     gap: 1rem;
     justify-self: flex-end;
+    @include mediaQueriesSm() {
+      padding: 0 !important;
+      justify-self: center;
+      width: 100%;
+    }
+    button.btn {
+      @include mediaQueriesSm() {
+        padding: 7px !important;
+        width: max-content;
+      }
+    }
   }
 }
 </style>

@@ -32,7 +32,9 @@
             />
           </div>
           <div class="-flex:align-items:center -justify-content:flexEnd -gap:2">
-            <label for="email" class="-textRight">Correo electrónico del padre:</label>
+            <label for="email" class="-textRight"
+              >Correo electrónico del padre:</label
+            >
             <InputUI
               id="email"
               type="email"
@@ -49,7 +51,15 @@
               placeholder="Introduce el número de teléfono"
             />
           </div>
-          <div class="pwd -pRelative -flex:align-items:center -justify-content:flexEnd -gap:2">
+          <div
+            class="
+              pwd
+              -pRelative
+              -flex:align-items:center
+              -justify-content:flexEnd
+              -gap:2
+            "
+          >
             <label for="password" class="-textRight">Contraseña:</label>
             <InputUI
               id="password"
@@ -61,7 +71,10 @@
           </div>
           <div class="-flex:align-items:center -justify-content-evenly -gap:2">
             <label for="password" class="-textRight">Estado:</label>
-            <SelectUI placeholder="Introduce el estado de tu alumno" :suggestion-list="['Active', 'Inactive']" />
+            <SelectUI
+              placeholder="Introduce el estado de tu alumno"
+              :suggestion-list="['Active', 'Inactive']"
+            />
           </div>
         </div>
         <div class="v-modal__content-footer">
@@ -69,16 +82,10 @@
             name="Cancelar"
             type="button"
             fill="outline"
-            style="font-size: 16px"
             class="btn -pInline:2"
             @click="handleRemoveModal"
           />
-          <ButtonUI
-            name="Crear"
-            type="button"
-            style="font-size: 16px"
-            class="btn -pInline:3"
-          />
+          <ButtonUI name="Crear" type="button" class="btn -pInline:3" />
         </div>
       </Modal>
     </transition>
@@ -89,76 +96,20 @@
       <ModalImportFile
         v-if="$store.state.isBackdrop && isModalImportStudent"
         title="Importar alumnos"
-        @close="isModalImportStudent = $event" />
+        @close="isModalImportStudent = $event"
+      />
     </transition>
     <!-- END-MODAL-IMPORT-STUDENT -->
 
-    <!-- MODAL-SAVECHANGED -->
-    <transition name="fade" mode="in-out">
-      <ModalSuccess
-        v-if="$store.state.isBackdrop && isModalChangeData"
-        @success="handleRemoveModal"
-      />
-    </transition>
-    <!-- END-MODAL-SAVECHANGED -->
-
-    <!-- MODAL-REMOVE -->
-    <transition name="fade" mode="in-out">
-      <Modal v-if="$store.state.isBackdrop && isModalRemoveData">
-        <div class="-flex:flex-direction:column -alig-items:center -gap:4 -pInline:3 -center">
-          <div>
-            <h2 class="-bold -mBottom:1">Eliminar sección</h2>
-            <p class="-fontSize2:2">
-              ¿Estás seguro que quieres eliminar la sección?
-            </p>
-          </div>
-          <div class="-flex -gap:1">
-            <ButtonUI
-              name="cancelar"
-              type="button"
-              color="secondary"
-              fill="outline"
-              style="font-size: 18px"
-              @click="handleRemoveModal"
-            />
-            <ButtonUI
-              name="Eliminar"
-              type="button"
-              color="secondary"
-              style="font-size: 18px"
-              @click="handleRemoveModal"
-            />
-          </div>
-        </div>
-      </Modal>
-    </transition>
-    <!-- END-MODAL-REMOVE -->
-
-    <!-- MODAL-NOT-REMOVE -->
-    <transition name="fade" mode="in-out">
-      <Modal v-if="$store.state.isBackdrop && isModalNotRemoveData">
-        <div class="-flex:flex-direction:column -align-items:center -gap:4 -pInline:3 -center">
-          <div>
-            <h2 class="-bold -mBottom:1">Eliminar grado</h2>
-            <p class="-fontSize2:2">
-              Los sentimos, no es posible eliminar esta apartado. Esta sujeta a
-              información con respectos a las secciones y sus alumnos.
-            </p>
-          </div>
-          <ButtonUI
-            name="Aceptar"
-            type="button"
-            color="secondary"
-            class="btn -pInline:2"
-            style="font-size: 18px; max-width: 50%; width: 100%"
-            @click="handleRemoveModal"
-          />
-        </div>
-      </Modal>
-    </transition>
-    <!-- END-MODAL-NOT-REMOVE -->
-
-    <div class="v-header -flex:justify-content:between -align-items:center -flex-wrap:wrap -gap:1">
+    <div
+      class="
+        v-header
+        -flex:justify-content:between
+        -align-items:center
+        -flex-wrap:wrap
+        -gap:1
+      "
+    >
       <div class="-flex:align-items:center -gap:3">
         <button @click="$router.go(-1)">
           <font-awesome-icon icon="fa-solid fa-arrow-left" color="#9494D8" />
@@ -185,15 +136,30 @@
     <div class="-mBlock:2">
       <div class="-flex:align-items:center -justify-content-evenly -gap:2">
         <label for="password" class="-textRight">Profesor tutor:</label>
-        <SelectUI placeholder="Nombre del profesor" :suggestion-list="['hola1','hola2','hola3']" />
+        <SelectUI
+          placeholder="Nombre del profesor"
+          :suggestion-list="['hola1', 'hola2', 'hola3']"
+        />
       </div>
       <Summary
         v-if="false"
         title="No tienes alumnos registrados"
-        body="Por favor, crea o importar a los alumnos de está sección haciendo clic en el botón superior." />
+        body="Por favor, crea o importar a los alumnos de está sección haciendo clic en el botón superior."
+      />
       <template v-else>
-        <TableStudent :suggestion-list="tableStudents" />
-        <Paginator current-page="1" />
+        <transition :name="transitionName" mode="out-in">
+          <template v-if="transitionAnimated">
+            <TableStudent :suggestion-list="tableStudents" />
+          </template>
+          <LoaderCircle v-else />
+        </transition>
+
+        <Paginator
+          current-page="1"
+          @currentPage="currentPage = $event"
+          @transitionName="transitionName = $event"
+          @transitionAnimated="transitionAnimated = $event"
+        />
       </template>
     </div>
   </div>
@@ -211,8 +177,8 @@ import Paginator from '@/components/Paginator.vue'
 import ButtonUI from '@/components/UI/ButtonUI.vue'
 import SelectUI from '@/components/UI/SelectUI.vue'
 import TableStudent from '@/components/table/TableStudent.vue'
-import ModalSuccess from '@/components/modals/ModalSuccess.vue'
 import ModalImportFile from '@/components/modals/ModalImportFile.vue'
+import LoaderCircle from '~/components/loadings/LoaderCircle.vue'
 
 import studentsJSON from '@/JSON/students.json'
 
@@ -226,17 +192,33 @@ export default Vue.extend({
     ButtonUI,
     Paginator,
     TableStudent,
-    ModalSuccess,
-    ModalImportFile
-},
+    LoaderCircle,
+    ModalImportFile,
+  },
   layout: 'ManageUI',
   data: () => ({
+    tableStudents: studentsJSON,
+    student: {
+      code: '',
+      id: '',
+      name: '',
+      email: '',
+      parent: '',
+      phone: '',
+      password: '',
+      state: '',
+    },
+
+    // MODAL's
     isModal: false,
-    isModalChangeData: false,
     isModalRemoveData: false,
     isModalNotRemoveData: false,
     isModalImportStudent: false,
-    tableStudents: studentsJSON
+
+    // PAGINATION's
+    currentPage: 1,
+    transitionName: 'slide-right',
+    transitionAnimated: true,
   }),
   head() {
     return {
@@ -248,21 +230,19 @@ export default Vue.extend({
       return capitalize(this.$route.params.student)
     },
   },
+  watch: {
+    currentPage() {
+      setTimeout(() => {
+        this.transitionAnimated = true
+      }, 1000)
+    },
+  },
   methods: {
     handleShowModal(name: string) {
       this.$store.commit('SETBACKDROP', true)
       switch (name) {
         case 'create-student':
           this.isModal = true
-          break
-        case 'save':
-          this.isModalChangeData = true
-          break
-        case 'remove':
-          this.isModalRemoveData = true
-          break
-        case 'not-remove':
-          this.isModalNotRemoveData = true
           break
         case 'import-student':
           this.isModalImportStudent = true
@@ -271,7 +251,6 @@ export default Vue.extend({
     },
     handleRemoveModal() {
       this.isModal = false
-      this.isModalChangeData = false
       this.isModalRemoveData = false
       this.isModalNotRemoveData = false
       this.$store.commit('SETBACKDROP', false)
@@ -291,7 +270,7 @@ export default Vue.extend({
 @import '@/assets/sass/lib/var';
 
 .v-header {
-  >div>button>svg {
+  > div > button > svg {
     font-size: 40px;
   }
   @include mediaQueriesSm() {
@@ -300,9 +279,8 @@ export default Vue.extend({
     flex-direction: column;
     > div {
       width: 100%;
-      max-width: 90%;
       gap: 1rem;
-      >button>svg {
+      > button > svg {
         font-size: 20px;
       }
     }
@@ -327,9 +305,12 @@ export default Vue.extend({
     font-weight: 700;
     font-size: 14px;
     line-height: 28px;
-    color: #9494D8;
+    color: #9494d8;
     right: 1rem;
     background-color: #fff;
+    @include mediaQueriesSm() {
+      top: 0;
+    }
   }
   @include mediaQueriesMd() {
     > div div {
@@ -338,10 +319,22 @@ export default Vue.extend({
       gap: 1rem;
     }
   }
+
   &-footer {
     display: flex;
     gap: 1rem;
     justify-self: flex-end;
+    @include mediaQueriesSm() {
+      padding: 0 !important;
+      justify-self: center;
+      width: 100%;
+    }
+    button.btn {
+      @include mediaQueriesSm() {
+        padding: 7px !important;
+        width: max-content;
+      }
+    }
   }
 }
 </style>

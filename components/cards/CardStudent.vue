@@ -2,7 +2,8 @@
   <div class="v-card">
     <div class="v-card-body">
       <div class="v-card__field">
-        <input v-model="value" :readonly="!isEdit" type="text" />
+        <input v-if="isEdit" v-model="value" type="text" />
+        <p v-else>{{value}}</p>
       </div>
       <div class="v-card__option">
         <NuxtLink v-if="!isEdit" :to="`${nuxtLink}${title}`">
@@ -10,8 +11,7 @@
             type="button"
             :name="button"
             :fill="fill"
-            class="btn -pBlock:1 -pInline:3"
-            style="font-size: 16px"
+            class="btn -pInline:3"
             @mouseenter="fill = 'solid'"
             @mouseleave="fill = 'outline'"
           />
@@ -21,8 +21,7 @@
           type="button"
           name="Guardar"
           :fill="fill"
-          class="btn -pBlock:1 -pInline:3"
-          style="font-size: 16px"
+          class="btn -pInline:3"
           @click="handleChangeData"
           @mouseenter="fill = 'solid'"
           @mouseleave="fill = 'outline'"
@@ -115,7 +114,7 @@ export default Vue.extend({
   }
   &__field {
     flex-grow: 1;
-    input[readonly],
+    p,
     input {
       border: none;
       padding: 0 1rem !important;
@@ -146,11 +145,12 @@ export default Vue.extend({
 
   }
   &__option {
-    @include mediaQueriesSm() {
+    @include mediaQueriesMd() {
       .btn {
         padding: 7px 2rem !important;
         font-size: 16px !important;
-        font-weight: 600;
+        font-weight: 600 !important;
+        width: max-content;
       }
     }
   }
