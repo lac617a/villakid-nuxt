@@ -1,4 +1,5 @@
-[{
+[
+  {
     "name": "Resumen",
     "nuxtLink": "/manage",
     "nuxtLinkName": "manage",
@@ -8,7 +9,8 @@
     "name": "Alumnos",
     "logo": "peoples-primary.svg",
     "nuxtLinkName": "manage-student",
-    "child": [{
+    "child": [
+      {
         "name": "Inicial",
         "nuxtLink": "/manage/student/inicial"
       },
@@ -22,7 +24,8 @@
     "name": "Cursos",
     "logo": "book-primary.svg",
     "nuxtLinkName": "manage-course ",
-    "child": [{
+    "child": [
+      {
         "name": "Inicial",
         "nuxtLink": "/manage/course/inicial"
       },
@@ -36,7 +39,8 @@
     "name": "Profesores",
     "logo": "people-primary.svg",
     "nuxtLinkName": "manage-teacher",
-    "child": [{
+    "child": [
+      {
         "name": "Inicial",
         "nuxtLink": "/manage/teacher/inicial"
       },

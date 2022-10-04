@@ -60,13 +60,7 @@
             />
           </div>
           <div
-            class="
-              pwd
-              -pRelative
-              -flex:align-items:center
-              -justify-content:flexEnd
-              -gap:2
-            "
+            class="pwd -pRelative -flex:align-items:center -justify-content:flexEnd -gap:2"
           >
             <label for="password" class="-textRight">Contraseña:</label>
             <InputUI
@@ -121,13 +115,7 @@
     <transition name="fade" mode="in-out">
       <Modal v-if="$store.state.isBackdrop && isModalRemoveStudent">
         <div
-          class="
-            -flex:flex-direction:column
-            -alig-items:center
-            -gap:4
-            -pInline:3
-            -center
-          "
+          class="-flex:flex-direction:column -alig-items:center -gap:4 -pInline:3 -center"
         >
           <div>
             <h2 class="-bold -mBottom:1">Eliminar alumno</h2>
@@ -159,7 +147,14 @@
 
     <Table
       :suggestion-list="suggestionList"
-      :heading-list="['Nombre Alumnos', 'Correo', 'Padre/apoderado', 'Teléfono', 'Estado', 'Editar']"
+      :heading-list="[
+        'Nombre Alumnos',
+        'Correo',
+        'Padre/apoderado',
+        'Teléfono',
+        'Estado',
+        'Editar',
+      ]"
       @editData="handleShowModal('edit-student', $event)"
       @removeData="handleShowModal('remove-student', $event)"
     />

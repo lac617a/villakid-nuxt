@@ -1,5 +1,8 @@
 <template>
-  <aside class="v-sidebar" :class="{ 'is-active': sideBar, 'show-sidebar': showSidebar }">
+  <aside
+    class="v-sidebar"
+    :class="{ 'is-active': sideBar, 'show-sidebar': showSidebar }"
+  >
     <ul class="v-navbar">
       <Item
         v-for="item in sidebar"
@@ -17,7 +20,7 @@
         <img
           src="@/assets/img/icon/arrow-left.svg"
           alt="arrow-left-large"
-          :style="{transform: `rotate(${sideBar ? '0deg' : '180deg'})`}"
+          :style="{ transform: `rotate(${sideBar ? '0deg' : '180deg'})` }"
         />
       </button>
       <span class="link_name logout" @click.once="logout()">Cerrar Sesión</span>
@@ -30,13 +33,13 @@ import Vue, { PropType } from 'vue'
 import Item from './Item.vue'
 
 interface ISidebarProps {
-  name: string;
-  logo: string;
-  nuxtLink?: string;
-  nuxtLinkName?: string;
+  name: string
+  logo: string
+  nuxtLink?: string
+  nuxtLinkName?: string
   child: {
-    name: string;
-    nuxtLink: string;
+    name: string
+    nuxtLink: string
   }[]
 }
 
@@ -46,9 +49,9 @@ export default Vue.extend({
   props: {
     sidebar: {
       type: Array as PropType<ISidebarProps[]>,
-      default: () => []
+      default: () => [],
     },
-    showSidebar: { type: Boolean, default: false }
+    showSidebar: { type: Boolean, default: false },
   },
   data: () => ({
     sideBar: true,

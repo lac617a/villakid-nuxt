@@ -10,8 +10,8 @@
     </button>
     <ul class="v-select-list" :class="{ active: isActive }">
       <li
-        v-for="item in (suggestionList)"
-        :key="(item.name)"
+        v-for="item in suggestionList"
+        :key="item.name"
         role="listitem"
         class="v-select__item"
         @click.capture.stop="handleSelect"
@@ -23,10 +23,10 @@
 </template>
 
 <script lang="ts">
-import Vue, {PropType} from 'vue'
+import Vue, { PropType } from 'vue'
 
 interface SelectProp {
-  name: string;
+  name: string
 }
 
 export default Vue.extend({

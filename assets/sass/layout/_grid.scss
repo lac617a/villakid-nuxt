@@ -10,7 +10,7 @@
 
 .-container--big {
   @extend .-container;
-  max-width: 1234PX;
+  max-width: 1234px;
   padding: 0 20px;
 }
 
@@ -58,13 +58,12 @@
     position: fixed;
 } */
 
-
 // overflow
 .-overHidden {
   @include Overflow();
 }
 
-.-vh{
+.-vh {
   height: 100vh;
 }
 
@@ -151,7 +150,6 @@
   }
 
   @include mediaQueriesSm {
-
     .-col-1,
     .-col-2,
     .-col-3,
@@ -177,7 +175,6 @@
   padding-right: $spaceSm;
   padding-left: $spaceSm;
 }
-
 
 img {
   width: 100%;

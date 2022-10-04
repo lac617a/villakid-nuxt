@@ -34,14 +34,15 @@
                 accept="image/*"
                 @change.capture="handleGetPicture"
               />
-              <p v-if="teacher.picture !== ''" class="-fontSize2:1 -bold">Cambiar foto de perfil</p>
+              <p v-if="teacher.picture !== ''" class="-fontSize2:1 -bold">
+                Cambiar foto de perfil
+              </p>
             </button>
             <p class="-medium -fontSize2:1">HRJKL982</p>
           </div>
           <div class="-flex:justify-content:flexEnd -gap:2">
             <label for="password" class="-textRight">Biografía:</label>
             <textarea rows="5" placeholder="Introduce una breve descripción">
-
             </textarea>
           </div>
           <div class="-flex:align-items:center -justify-content:flexEnd -gap:2">
@@ -80,11 +81,7 @@
             class="btn -pInline:2"
             @click="handleRemoveModal"
           />
-          <ButtonUI
-            name="Crear"
-            type="button"
-            class="btn -pInline:3"
-          />
+          <ButtonUI name="Crear" type="button" class="btn -pInline:3" />
         </div>
       </Modal>
     </transition>
@@ -262,7 +259,6 @@ export default Vue.extend({
   height: 80vh;
   @include mediaQueriesMd() {
     height: 80%;
-
   }
 }
 
@@ -298,7 +294,8 @@ export default Vue.extend({
         color: transparent;
       }
     }
-    > div, > button {
+    > div,
+    > button {
       input {
         cursor: pointer;
         position: absolute;
@@ -319,7 +316,7 @@ export default Vue.extend({
   }
   textarea {
     width: 72%;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
     padding: 11px 30px;
@@ -333,7 +330,7 @@ export default Vue.extend({
       width: 100%;
     }
     &:hover {
-      border: 1px solid #9494D8;
+      border: 1px solid #9494d8;
     }
   }
   @include mediaQueriesMd() {

@@ -55,6 +55,6 @@ export default Vue.extend({
 */
 .loader svg path,
 .loader svg rect {
-  fill: #9494D8;
+  fill: #9494d8;
 }
 </style>

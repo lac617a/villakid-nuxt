@@ -3,7 +3,7 @@
     <div class="v-card-body">
       <div class="v-card__field">
         <input v-if="isEdit" v-model="value" type="text" />
-        <p v-else>{{value}}</p>
+        <p v-else>{{ value }}</p>
       </div>
       <div class="v-card__option">
         <NuxtLink v-if="!isEdit" :to="`${nuxtLink}${title}`">
@@ -142,7 +142,6 @@ export default Vue.extend({
       outline: none;
       cursor: initial;
     }
-
   }
   &__option {
     @include mediaQueriesMd() {

@@ -1,6 +1,6 @@
 <template>
   <div class="v-modal" role="dialog" @click.capture="handleIsBackdrop">
-    <div class="v-modal-dialog" role="document" :style="{maxWidth}">
+    <div class="v-modal-dialog" role="document" :style="{ maxWidth }">
       <div class="v-modal-content">
         <div v-if="withHeader" class="v-modal__header">
           <h2 class="-bold">{{ title }}</h2>

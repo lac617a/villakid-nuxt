@@ -11,11 +11,11 @@ export const state = (): IStateProp => ({
 export type RootState = ReturnType<typeof state>
 
 export const getters: GetterTree<RootState, RootState> = {
-  isBackdrop: state => state.isBackdrop
+  isBackdrop: (state) => state.isBackdrop,
 }
 
 export const mutations: MutationTree<RootState> = {
   SETBACKDROP(state, payload) {
     state.isBackdrop = payload
-  }
+  },
 }

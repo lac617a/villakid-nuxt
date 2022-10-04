@@ -106,13 +106,7 @@
     <transition name="fade" mode="in-out">
       <Modal v-if="$store.state.isBackdrop && isModalRemoveStudent">
         <div
-          class="
-            -flex:flex-direction:column
-            -alig-items:center
-            -gap:4
-            -pInline:3
-            -center
-          "
+          class="-flex:flex-direction:column -alig-items:center -gap:4 -pInline:3 -center"
         >
           <div>
             <h2 class="-bold -mBottom:1">Eliminar alumno</h2>

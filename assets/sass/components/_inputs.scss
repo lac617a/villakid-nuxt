@@ -1,5 +1,5 @@
-@import "../lib/var";
-@import "../lib/mixin";
+@import '../lib/var';
+@import '../lib/mixin';
 
 .v-wrap-input {
   max-width: 520px;
@@ -21,7 +21,7 @@
   border-radius: 30px;
   overflow: hidden;
   background-color: $color-lightin;
-  [type="button"] {
+  [type='button'] {
     padding-inline: 2rem;
   }
   &.error {
@@ -30,16 +30,15 @@
   }
   transition: 300ms;
 }
-.v-input:not([type="checkbox"]) {
+.v-input:not([type='checkbox']) {
   appearance: none;
   outline: none;
   border: none;
   width: 100%;
   padding: 18px;
-  
 }
 
-.v-input[type="checkbox"] {
+.v-input[type='checkbox'] {
   & ~ .v-label {
     font-size: 16px;
     color: $color-grey-dark;
@@ -66,7 +65,7 @@
     margin-bottom: 0;
     cursor: pointer;
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       left: 8px;
       top: 4px;
@@ -78,7 +77,7 @@
       border: 2px solid $color-primary;
     }
     &:after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       width: 10px;
@@ -91,7 +90,7 @@
       left: 15px;
     }
   }
-  input[type="checkbox"] {
+  input[type='checkbox'] {
     display: none;
     &:checked ~ label {
       &:before {

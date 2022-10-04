@@ -10,8 +10,6 @@ html {
 
 body {
   overflow-x: hidden;
-
-
 }
 
 // Scroll bar
@@ -62,42 +60,41 @@ blockquote {
   background-color: $color-secondary;
 }
 
-
 // --- PAGE FRAME ---
 
 .page-frame {
   height: 100vh;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     z-index: -1;
     top: 20%;
     left: 0;
     height: 50%;
     width: 200px;
-    background-image: url("@/assets/img/background/vector-left.svg");
+    background-image: url('@/assets/img/background/vector-left.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left left;
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     z-index: -1;
     top: 20%;
     right: -10px;
     height: 50%;
     width: 200px;
-    background-image: url("@/assets/img/background/vector-right.svg");
+    background-image: url('@/assets/img/background/vector-right.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center left;
   }
 
   &-before::before {
-    content: url("@/assets/img/background/vector-header-left.svg");
+    content: url('@/assets/img/background/vector-header-left.svg');
     position: absolute;
     z-index: -1;
     top: -10px;
@@ -105,7 +102,7 @@ blockquote {
   }
 
   &-before::after {
-    content: url("@/assets/img/background/vector-header-right.svg");
+    content: url('@/assets/img/background/vector-header-right.svg');
     position: absolute;
     z-index: -1;
     top: -10px;
@@ -113,7 +110,7 @@ blockquote {
   }
 
   &-after::before {
-    content: url("@/assets/img/background/vector-footer-left.svg");
+    content: url('@/assets/img/background/vector-footer-left.svg');
     position: absolute;
     z-index: -1;
     bottom: -30px;
@@ -121,7 +118,7 @@ blockquote {
   }
 
   &-after::after {
-    content: url("@/assets/img/background/vector-footer-right.svg");
+    content: url('@/assets/img/background/vector-footer-right.svg');
     position: absolute;
     z-index: -1;
     bottom: -30px;

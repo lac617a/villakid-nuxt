@@ -20,7 +20,7 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'CPaginator',
   props: {
-    currentPage: {type: String, default: '1'}
+    currentPage: { type: String, default: '1' },
   },
   data: () => ({
     countPage: 1,
@@ -32,7 +32,7 @@ export default Vue.extend({
       this.$emit('currentPage', this.countPage)
       this.$emit('transitionName', this.transitionName)
       this.$emit('transitionAnimated', this.transitionAnimated)
-    }
+    },
   },
   methods: {
     incrementPage(pageSize: string | undefined) {
@@ -52,8 +52,8 @@ export default Vue.extend({
         return
       }
       return this.countPage
-    }
-  }
+    },
+  },
 })
 </script>
 

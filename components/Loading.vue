@@ -5,30 +5,31 @@
       <img
         v-if="showLogo"
         alt="loading"
-        src="../assets/img/logos/loading.svg" />
+        src="../assets/img/logos/loading.svg"
+      />
     </transition>
     <div class="page-frame-after"></div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue'
 
 export default Vue.extend({
-  name: "LoadingScreen",
+  name: 'LoadingScreen',
   transition: {
     name: 'slide-fade',
-    mode: 'in-out'
+    mode: 'in-out',
   },
   data: () => ({
     showLogo: false,
   }),
   beforeMount() {
     setTimeout(() => {
-      this.showLogo = true;
-    }, 500);
+      this.showLogo = true
+    }, 500)
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>
@@ -38,7 +39,7 @@ export default Vue.extend({
   inset: 0 0 0 0;
   height: 100vh;
   overflow: hidden;
-  background-image: url("../assets/img/background/loading-screens.svg");
+  background-image: url('../assets/img/background/loading-screens.svg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

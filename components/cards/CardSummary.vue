@@ -3,7 +3,10 @@
     <h2 class="card-summary__title">{{ title }}</h2>
     <ul class="card-summary__nav">
       <li v-for="item in showList" :key="item.title" class="card-summary__item">
-        <img :src="require(`@/assets/img/icon/${item.svg}`)" :alt="item.title" />
+        <img
+          :src="require(`@/assets/img/icon/${item.svg}`)"
+          :alt="item.title"
+        />
         <div class="card-summary__content">
           <p>{{ item.title }}:</p>
           <p class="count -bold">{{ item.result }}</p>

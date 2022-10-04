@@ -19,8 +19,15 @@
         </button>
       </div>
     </div>
-    <div class="-flex:align-items:center -justify-self:flexEnd -gap:1 -flex-wrap:wrap">
-      <ButtonUI name="Cancelar" type="button" fill="outline" @click="handleClose" />
+    <div
+      class="-flex:align-items:center -justify-self:flexEnd -gap:1 -flex-wrap:wrap"
+    >
+      <ButtonUI
+        name="Cancelar"
+        type="button"
+        fill="outline"
+        @click="handleClose"
+      />
       <ButtonUI name="Importar" type="button" />
     </div>
   </Modal>
@@ -48,7 +55,7 @@ export default Vue.extend({
     handleClose() {
       this.$emit('close', false)
       this.$store.commit('SETBACKDROP', false)
-    }
+    },
   },
 })
 </script>

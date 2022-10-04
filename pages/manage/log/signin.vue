@@ -80,7 +80,7 @@ export default Vue.extend({
   layout: 'FrameUI',
   transition: {
     name: 'slide-fade',
-    mode: 'in-out'
+    mode: 'in-out',
   },
   data: () => ({
     loading: true,

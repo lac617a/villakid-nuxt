@@ -13,13 +13,12 @@ function setCookie(string: string, pwd: string) {
   )};expires=${expired.toUTCString()};path=/`
 }
 
-
 // Automatically read password in
 // cookie after entering username
 export function showPassword(value: string) {
   const passowrd = getCookie(value)
   if (passowrd === null) return
-  return passowrd;
+  return passowrd
 }
 
 function getCookie(name: string) {
@@ -29,8 +28,7 @@ function getCookie(name: string) {
   const cookieLength = cookie.length
   for (let index = 0; index < cookieLength; index++) {
     const offset = index + argLength
-    if (cookie.substring(index, offset) === arg)
-      return getCookieVal(offset)
+    if (cookie.substring(index, offset) === arg) return getCookieVal(offset)
     index = cookie.indexOf(' ', index)
     if (index === 0 || index === -1) break
   }

@@ -8,19 +8,21 @@
 }
 
 .slide-right {
-  animation: .6s ease-out 0s normal forwards 1 slide-right;
+  animation: 0.6s ease-out 0s normal forwards 1 slide-right;
   opacity: 1;
 }
 
 .animation-y {
   transform: translateY(-20%);
-  transition: transform 0.25s cubic-bezier(0, 0, 0.2, 1) 0.25s, opacity 0.16s cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0, 0, 0.2, 1) 0.25s,
+    opacity 0.16s cubic-bezier(0, 0, 0.2, 1);
   opacity: 0;
 }
 
 .animation-x {
   transform: translateX(-20%);
-  transition: transform 0.25s cubic-bezier(0, 0, 0.2, 1) 0.25s, opacity 0.16s cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0, 0, 0.2, 1) 0.25s,
+    opacity 0.16s cubic-bezier(0, 0, 0.2, 1);
   opacity: 0;
 }
 
@@ -29,7 +31,6 @@
   transition-delay: 0ms, 0ms, 0ms;
   opacity: 1;
 }
-
 
 @keyframes slide-top {
   0% {

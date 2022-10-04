@@ -10,24 +10,23 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: PWA, Villakid
 */
 
-
 // lib
 // @import "lib/fonts";
-@import "lib/var";
-@import "lib/mixin";
-@import "layout/bootstrap_reboot";
+@import 'lib/var';
+@import 'lib/mixin';
+@import 'layout/bootstrap_reboot';
 
 // base
-@import "base/typography";
-@import "base/links";
-@import "base/buttons";
-@import "base/animation";
-@import "base/icons";
+@import 'base/typography';
+@import 'base/links';
+@import 'base/buttons';
+@import 'base/animation';
+@import 'base/icons';
 
 // layout
-@import "layout/bootstrap";
-@import "layout/site";
-@import "layout/grid";
+@import 'layout/bootstrap';
+@import 'layout/site';
+@import 'layout/grid';
 
 // components
-@import "components/404";
+@import 'components/404';

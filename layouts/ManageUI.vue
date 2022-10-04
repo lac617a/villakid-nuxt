@@ -86,7 +86,7 @@ export default Vue.extend({
   }),
   mounted() {
     const logoLarge = require('@/assets/img/logos/villakid-logo.svg')
-    const logoSmall = require('@/assets/img/logos/villakid-logo-small.svg');
+    const logoSmall = require('@/assets/img/logos/villakid-logo-small.svg')
 
     const getResize = () => {
       if (window.innerWidth > 480) {

@@ -52,13 +52,7 @@
             />
           </div>
           <div
-            class="
-              pwd
-              -pRelative
-              -flex:align-items:center
-              -justify-content:flexEnd
-              -gap:2
-            "
+            class="pwd -pRelative -flex:align-items:center -justify-content:flexEnd -gap:2"
           >
             <label for="password" class="-textRight">Contraseña:</label>
             <InputUI
@@ -102,13 +96,7 @@
     <!-- END-MODAL-IMPORT-STUDENT -->
 
     <div
-      class="
-        v-header
-        -flex:justify-content:between
-        -align-items:center
-        -flex-wrap:wrap
-        -gap:1
-      "
+      class="v-header -flex:justify-content:between -align-items:center -flex-wrap:wrap -gap:1"
     >
       <div class="-flex:align-items:center -gap:3">
         <button @click="$router.go(-1)">

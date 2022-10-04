@@ -8,7 +8,6 @@ interface IUserProp {
   username?: string | null
 }
 
-
 export const state = (): IUserProp => ({
   loggedIn: false,
   username: null,
@@ -17,7 +16,7 @@ export const state = (): IUserProp => ({
 export type RootState = ReturnType<typeof state>
 
 export const getters: GetterTree<RootState, RootState> = {
-  logged: state => state.loggedIn
+  logged: (state) => state.loggedIn,
 }
 
 export const mutations: MutationTree<RootState> = {

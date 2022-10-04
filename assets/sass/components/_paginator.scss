@@ -16,7 +16,8 @@
     border-radius: 50px;
   }
   .v-paginator {
-    &-left, &-right {
+    &-left,
+    &-right {
       svg {
         height: 24px;
         path {

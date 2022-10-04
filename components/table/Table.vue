@@ -15,7 +15,9 @@
           <td>{{ suggestion.name }}</td>
           <td>{{ suggestion.email }}</td>
           <td v-if="suggestion.parent">{{ suggestion.parent }}</td>
-          <td v-if="suggestion.bio">{{ suggestion.bio.substring(0, 22) }}...</td>
+          <td v-if="suggestion.bio">
+            {{ suggestion.bio.substring(0, 22) }}...
+          </td>
           <td v-if="suggestion.phone">{{ suggestion.phone }}</td>
           <td>{{ suggestion.state }}</td>
           <td>

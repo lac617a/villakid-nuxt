@@ -8,7 +8,11 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Webapp for villakid' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Webapp for villakid',
+      },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'theme-color', content: '#7B7BCC' },
     ],
@@ -19,13 +23,11 @@ export default {
   css: [
     '@assets/css/main.css',
     '@assets/sass/style.scss',
-    '@fortawesome/fontawesome-svg-core/styles.css'
+    '@fortawesome/fontawesome-svg-core/styles.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '@plugins/fontawesome.ts',
-  ],
+  plugins: ['@plugins/fontawesome.ts'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -37,7 +39,7 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://www.npmjs.com/package/@nuxtjs/style-resources
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -51,9 +53,7 @@ export default {
   ],
 
   styleResources: {
-    scss: [
-      '@assets/scss/style.scss'
-    ]
+    scss: ['@assets/scss/style.scss'],
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -77,5 +77,5 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-  middleware: ["auth"],
+  middleware: ['auth'],
 }

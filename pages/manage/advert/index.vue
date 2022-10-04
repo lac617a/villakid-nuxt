@@ -37,7 +37,7 @@ export default Vue.extend({
     font-weight: 600;
     font-size: 20px;
     line-height: 27px;
-    color: #4F4F4F;
+    color: #4f4f4f;
   }
   svg {
     width: 24px;

@@ -11,11 +11,7 @@
         <div class="-flex:flex-direction:column -gap:2 -mBlock:2">
           <div class="-flex:align-items:center -justify-content:flexEnd -gap:2">
             <label for="course" class="-textRight">Nombre de curso:</label>
-            <InputUI
-              id="course"
-              type="text"
-              placeholder="Nombre de curso"
-            />
+            <InputUI id="course" type="text" placeholder="Nombre de curso" />
           </div>
           <div class="-flex:align-items:center -justify-content-evenly -gap:2">
             <label for="grade" class="-textRight">Grado:</label>
@@ -47,11 +43,7 @@
             class="btn -pInline:2"
             @click="handleRemoveModal"
           />
-          <ButtonUI
-            name="Crear"
-            type="button"
-            class="btn -pInline:3"
-          />
+          <ButtonUI name="Crear" type="button" class="btn -pInline:3" />
         </div>
       </Modal>
     </transition>
@@ -223,7 +215,6 @@ export default Vue.extend({
   height: 80vh;
   @include mediaQueriesMd() {
     height: 80%;
-
   }
 }
 
